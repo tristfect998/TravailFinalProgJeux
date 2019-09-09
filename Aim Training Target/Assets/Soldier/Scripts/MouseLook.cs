@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Characters.FirstPerson
+namespace AimTrainingTarget.Soldier
 {
     [Serializable]
     public class MouseLook
