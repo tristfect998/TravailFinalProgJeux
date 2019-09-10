@@ -9,10 +9,15 @@ public class movement : MonoBehaviour
     bool vAxisProneInUse = false;
     bool vAiming = false;
     bool vJumped = false;
+    public static AudioClip crouchSound;
+    static AudioSource audioSrc;
     // Use this for initialization
     void Start()
     {
+        crouchSound = Resources.Load<AudioClip>("crouching sound");
         anim = GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.clip = crouchSound;
     }
 
     // Update is called once per frame
@@ -22,6 +27,7 @@ public class movement : MonoBehaviour
         if (Input.GetAxisRaw("Crouch") == 1)
         {
             
+            audioSrc.Play();
             if(vAxisCrouchInUse == false)
             {
                 if (!anim.GetBool("isCrouch"))
@@ -49,7 +55,7 @@ public class movement : MonoBehaviour
         #region Prone
         if (Input.GetAxisRaw("Prone") == 1)
         {
-
+            audioSrc.Play();
             if (vAxisProneInUse == false)
             {
                 if (!anim.GetBool("isProne"))
@@ -86,7 +92,7 @@ public class movement : MonoBehaviour
 
         if (vAiming == true)
         {
-            anim.SetBool("isAiming", true);
+            anim.SetBool("isAiming", true);        
         }
         else
         {
@@ -94,9 +100,10 @@ public class movement : MonoBehaviour
         }
         #endregion
 
+        #region Jump
         if (Input.GetAxisRaw("Jump") == 1)
         {
-
+            audioSrc.Play();
             if (vJumped == false)
             {
                 if (anim.GetBool("isStanding"))
@@ -119,6 +126,6 @@ public class movement : MonoBehaviour
             anim.SetBool("isJumping", false);
             vJumped = false;
         }
-
+        #endregion
     }
 }
