@@ -10,6 +10,8 @@ namespace AimTrainingTarget.Soldier
         bool vAxisCrouchInUse = false;
         bool vAxisProneInUse = false;
         bool vAiming = false;
+        bool vWalking = false;
+        bool vRunning = false;
         bool vJumped = false;
         public static AudioClip crouchSound;
         static AudioSource audioSrc;
@@ -99,6 +101,48 @@ namespace AimTrainingTarget.Soldier
             else
             {
                 anim.SetBool("isAiming", false);
+            }
+            #endregion
+
+            #region Walking
+            if (Input.GetAxisRaw("Vertical") == 1)
+            {
+                vWalking = true;
+            }
+            else
+            {
+                vWalking = false;
+            }
+
+            if (vWalking == true)
+            {
+                anim.SetBool("isWalking", true);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
+            }
+            #endregion
+
+            #region Speint
+            if (Input.GetAxisRaw("Sprint") == 1)
+            {
+                vRunning = true;
+            }
+            else
+            {
+                vRunning = false;
+            }
+
+            if (vRunning == true)
+            {
+                anim.SetBool("isRunning", true);
+                anim.SetBool("isCrouch", false);
+                anim.SetBool("isStanding", true);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
             }
             #endregion
 
