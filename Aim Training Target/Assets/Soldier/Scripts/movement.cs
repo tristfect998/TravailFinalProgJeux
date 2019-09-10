@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moovement : MonoBehaviour
+public class movement : MonoBehaviour
 {
     Animator anim;
     bool vAxisCrouchInUse = false;
