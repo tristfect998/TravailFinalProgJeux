@@ -30,7 +30,6 @@ namespace AimTrainingTarget.Soldier
             #region Crouch
             if (Input.GetAxisRaw("Crouch") == 1)
             {
-
                 audioSrc.Play();
                 if (vAxisCrouchInUse == false)
                 {

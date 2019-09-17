@@ -249,9 +249,34 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114723671977598876, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: m_MouseLook.MinimumX
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114723671977598876, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: m_MouseLook.MaximumX
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114473928526607050, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: SoldierCamera
+      value: 
+      objectReference: {fileID: 1285778390}
+    - target: {fileID: 114473928526607050, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: crouchOffset.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabAsset: 0
+--- !u!20 &1285778390 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20080576831374092, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1155083395}
 --- !u!1 &1389848125
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +322,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 32ca01abc40bf5a44bedd486c88249ee, type: 2}
+  - {fileID: 2100000, guid: 05cfb8d77d880984689e6ddb6aea9d6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -382,7 +407,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 32ca01abc40bf5a44bedd486c88249ee, type: 2}
+  - {fileID: 2100000, guid: 05cfb8d77d880984689e6ddb6aea9d6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
