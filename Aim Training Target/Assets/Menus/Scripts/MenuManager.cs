@@ -44,6 +44,9 @@ public class MenuManager : MonoBehaviour {
     }
     private void JoinLevel_completed(AsyncOperation obj)
     {
-        JoinMenu.SetActive(false);
+        if(JoinMenu != null)
+        {
+            JoinMenu.SetActive(false);
+        }
     }
 }

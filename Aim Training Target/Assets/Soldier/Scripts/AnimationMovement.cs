@@ -15,6 +15,8 @@ namespace AimTrainingTarget.Soldier
         bool vJumped = false;
         public static AudioClip crouchSound;
         static AudioSource audioSrc;
+        public GameObject EscapeMenu;
+        static bool isPause;
         // Use this for initialization
         void Start()
         {
@@ -123,7 +125,7 @@ namespace AimTrainingTarget.Soldier
             }
             #endregion
 
-            #region Speint
+            #region Sprint
             if (Input.GetAxisRaw("Sprint") == 1)
             {
                 vRunning = true;
@@ -170,6 +172,24 @@ namespace AimTrainingTarget.Soldier
             {
                 anim.SetBool("isJumping", false);
                 vJumped = false;
+            }
+            #endregion
+
+            #region Escape
+            if (Input.GetKeyDown("escape"))
+            {
+                if(isPause)
+                {
+                    Time.timeScale = 1;
+                    //EscapeMenu.SetActive(false);
+                    isPause = false;
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                    //EscapeMenu.SetActive(true);                    
+                    isPause = true;
+                }
             }
             #endregion
         }
