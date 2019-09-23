@@ -305,7 +305,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.23, y: 1, z: 1.23}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1389848127
 MeshRenderer:
@@ -390,7 +390,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.23, y: 1, z: 1.23}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1529539324
 MeshRenderer:
@@ -447,6 +447,22 @@ Transform:
   m_Father: {fileID: 588171895}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1661915228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1123733695374836, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1155083395}
+--- !u!114 &1661915232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661915228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4291b8425c26147ae107e0e9e6a161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129648450
 GameObject:
   m_ObjectHideFlags: 0

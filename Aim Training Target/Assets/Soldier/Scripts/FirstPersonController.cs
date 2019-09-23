@@ -38,6 +38,8 @@ namespace AimTrainingTarget.Soldier
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private float normaly;
+        private float normalz;
 
         // Use this for initialization
         private void Start()
@@ -123,7 +125,7 @@ namespace AimTrainingTarget.Soldier
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
-            ProgressStepCycle(speed);
+            //ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
@@ -175,25 +177,32 @@ namespace AimTrainingTarget.Soldier
 
         private void UpdateCameraPosition(float speed)
         {
+
+            normaly = m_Camera.transform.localPosition.y;
+            normalz = m_Camera.transform.localPosition.z;
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
             {
                 return;
             }
-            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
+           if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
-                                      (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
-                newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
+                                      (speed*(m_IsWalking ? 1f : m_RunstepLenghten)),normalz);
+              newCameraPosition = m_Camera.transform.localPosition;
+              newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
+
             }
             else
             {
-                newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
+                 newCameraPosition = m_Camera.transform.localPosition;
+                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
+
             }
+            newCameraPosition.y = normaly;
             m_Camera.transform.localPosition = newCameraPosition;
+
         }
 
 
