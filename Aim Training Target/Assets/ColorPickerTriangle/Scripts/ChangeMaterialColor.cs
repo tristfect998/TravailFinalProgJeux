@@ -3,18 +3,20 @@ using System.Collections;
 
 public class ChangeMaterialColor : MonoBehaviour {
 
-    private ColorPickerTriangle colorPicker;
+    private ColorPickerTriangle[] colorPickers;
+    public int colorIndex = 0;
     private Material material;
 
     void Start()
     {
         material = GetComponent<SkinnedMeshRenderer>().material;
-        colorPicker = GameObject.FindObjectOfType<ColorPickerTriangle>();
-        colorPicker.SetNewColor(material.color);
+        colorPickers = GameObject.FindObjectsOfType<ColorPickerTriangle>();
+
+        colorPickers[colorIndex].SetNewColor(material.color);
     }
 
     void Update()
     {
-        material.color = colorPicker.TheColor;
+        material.color = colorPickers[colorIndex].TheColor;
     }
 }
