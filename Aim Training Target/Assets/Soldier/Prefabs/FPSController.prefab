@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 20080576831374092}
   - component: {fileID: 81223527023545034}
   - component: {fileID: 124188475839639688}
+  - component: {fileID: 114121761709832322}
   m_Layer: 0
   m_Name: FirstPersonCamera
   m_TagString: MainCamera
@@ -2287,6 +2288,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114121761709832322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123733695374836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4291b8425c26147ae107e0e9e6a161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114473928526607050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2298,6 +2310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539da7c0dd3c6a742b352e1934cda300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EscapeMenu: {fileID: 0}
 --- !u!114 &114723671977598876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2321,7 +2334,7 @@ MonoBehaviour:
     YSensitivity: 2
     clampVerticalRotation: 1
     MinimumX: -90
-    MaximumX: 90
+    MaximumX: 38
     smooth: 0
     smoothTime: 5
     lockCursor: 1
