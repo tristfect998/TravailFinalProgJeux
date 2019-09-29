@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cameraMoovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour {
+    Camera cam;
     bool isCrouch =false;
     bool isProne = false;
     bool vAxisCrouchInUse = false;
     bool vAxisProneInUse = false;
+    bool vJumped = false;
     string CurrentIdle = "Standing";
-    // Use this for initialization
 
-    // Update is called once per frame
+    void Start () {
+        cam = GetComponent<Camera>();
+    }
+
     void Update()
     {
-  
         #region crouch
         if (Input.GetAxisRaw("Crouch") == 1 )
         {
@@ -52,7 +55,7 @@ public class cameraMoovement : MonoBehaviour {
         }
         #endregion
 
-
+        #region Prone
         if (Input.GetAxisRaw("Prone") == 1)
         {
                 if (vAxisProneInUse == false)
@@ -86,6 +89,39 @@ public class cameraMoovement : MonoBehaviour {
         {
             vAxisProneInUse = false;
         }
-       
+        #endregion
+
+        #region Jump
+        if (Input.GetAxisRaw("Jump") == 1)
+        {
+ 
+            if (vJumped == false)
+            {
+                if (CurrentIdle != "Standing")
+                {
+                    if (isCrouch)
+                    {
+                        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 0.6f, transform.localPosition.z - 0.28f);
+                        isCrouch = false;
+                        isProne = false;
+                        CurrentIdle = "Standing";
+                    }
+                    else
+                    {
+                        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 1.28f, transform.localPosition.z - 0.54f);
+                        CurrentIdle = "Standing";
+                        isCrouch = false;
+                        isProne = false;
+                    }
+                }
+                vJumped = true;
+            }
+           
+            }
+        else
+        {
+            vJumped = false;
+        }
+        #endregion
     }
 }
