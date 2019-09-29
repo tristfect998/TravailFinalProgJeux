@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
-public class OptionsMenu : MonoBehaviour {
+public class OptionsMenu : MonoBehaviour
+{
 
     Resolution[] resolutions;
     public Dropdown resolutionDropDown;
@@ -55,5 +57,10 @@ public class OptionsMenu : MonoBehaviour {
     {
         Resolution resolution = resolutions[index];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void LoadCharacterColorPickers()
+    {
+        SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
     }
 }
