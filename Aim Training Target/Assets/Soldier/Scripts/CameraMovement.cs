@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
-    Camera cam;
+
     bool isCrouch =false;
     bool isProne = false;
     bool vAxisCrouchInUse = false;
@@ -11,9 +11,6 @@ public class CameraMovement : MonoBehaviour {
     bool vJumped = false;
     string CurrentIdle = "Standing";
 
-    void Start () {
-        cam = GetComponent<Camera>();
-    }
 
     void Update()
     {
