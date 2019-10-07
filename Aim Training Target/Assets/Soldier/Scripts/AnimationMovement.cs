@@ -26,6 +26,11 @@ namespace AimTrainingTarget.Soldier
             audioSrc.clip = crouchSound;
         }
 
+        void OnAnimatorIK(int layerIndex)
+        {
+            Debug.Log("test IK" + layerIndex);
+        }
+
         // Update is called once per frame
         void Update()
         {
