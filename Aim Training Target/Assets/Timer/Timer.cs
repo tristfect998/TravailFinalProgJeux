@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
 {
     Text TimerText;
     float TimerTime = 0f;
+    bool gameEnded = false;
     // Use this for initialization
     void Start()
     {
@@ -24,38 +25,47 @@ public class Timer : MonoBehaviour
 
     void ApplyNewTime()
     {
-        string FormatedTime = "";
-        float minutes = Mathf.Floor(TimerTime / 60);
-        float secondes = (TimerTime % 60);
-        if (minutes > 60)
+        if(!gameEnded)
         {
-            float hours = Mathf.Floor(minutes / 60);
-            if (hours < 10)
+            string FormatedTime = "";
+            float minutes = Mathf.Floor(TimerTime / 60);
+            float secondes = (TimerTime % 60);
+            if (minutes > 60)
             {
-                FormatedTime += "0" + hours + ":";
+                float hours = Mathf.Floor(minutes / 60);
+                if (hours < 10)
+                {
+                    FormatedTime += "0" + hours + ":";
+                }
+                else
+                {
+                    FormatedTime += hours + ":";
+                }
+            }
+            else if (minutes < 10)
+            {
+                FormatedTime += "0" + minutes + ":";
             }
             else
             {
-                FormatedTime += hours + ":";
+                FormatedTime += minutes + ":";
             }
-        }
-        else if (minutes < 10)
-        {
-            FormatedTime += "0" + minutes + ":";
-        }
-        else
-        {
-            FormatedTime += minutes + ":";
-        }
 
-        if (secondes < 10)
-        {
-            FormatedTime += "0" + Mathf.Floor(secondes);
+            if (secondes < 10)
+            {
+                FormatedTime += "0" + Mathf.Floor(secondes);
+            }
+            else
+            {
+                FormatedTime += Mathf.Floor(secondes);
+            }
+            TimerText.text = FormatedTime;
         }
-        else
-        {
-            FormatedTime += Mathf.Floor(secondes);
-        }
-        TimerText.text = FormatedTime;
+    }
+
+    void EndTimer()
+    {
+        gameEnded = true;
+        TimerText.enabled = false;
     }
 }

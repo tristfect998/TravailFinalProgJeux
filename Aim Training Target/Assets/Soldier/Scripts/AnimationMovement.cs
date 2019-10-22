@@ -15,8 +15,9 @@ namespace AimTrainingTarget.Soldier
         bool vJumped = false;
         public static AudioClip crouchSound;
         static AudioSource audioSrc;
-        public GameObject EscapeMenu;
         static bool isPause;
+        public GameObject rightHandObj;
+        public GameObject leftHandObj;
         // Use this for initialization
         void Start()
         {
@@ -24,11 +25,28 @@ namespace AimTrainingTarget.Soldier
             anim = GetComponent<Animator>();
             audioSrc = GetComponent<AudioSource>();
             audioSrc.clip = crouchSound;
+            
         }
 
         void OnAnimatorIK(int layerIndex)
         {
-            Debug.Log("test IK" + layerIndex);
+            if(vAiming)
+            {
+                if(rightHandObj != null)
+                {
+                    anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+                    anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+                    anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.transform.position);
+                    anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.transform.rotation);
+                }
+                if (leftHandObj != null)
+                {
+                    anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                    anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+                    anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.transform.position);
+                    anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.transform.rotation);
+                }
+            }
         }
 
         // Update is called once per frame
