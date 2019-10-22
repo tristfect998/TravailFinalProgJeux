@@ -8,6 +8,10 @@ public class ShootMecanics : MonoBehaviour {
     public float fireDelay = 0.1f;
     private float delayBeforeNextFire = 0;
     public float weaponRange = 50f;
+
+    public int magazineSize = 30;
+    private int bulletLeft;
+
     public Transform gunEnd;
     public Camera fpsCamera;
 
@@ -19,9 +23,19 @@ public class ShootMecanics : MonoBehaviour {
 	void Start () {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
-	}
+        bulletLeft = magazineSize;
+
+    }
 	void Update () {
-        ProcessFire();
+        if (bulletLeft > 0)
+        {
+            ProcessFire();
+        }
+
+        if (Input.GetAxis("Reload") != 0 && bulletLeft != magazineSize)
+        {
+            bulletLeft = magazineSize;
+        }
     }
 
     private void ProcessFire()
@@ -33,7 +47,7 @@ public class ShootMecanics : MonoBehaviour {
             if (delayBeforeNextFire <= 0)
             {
                 ShootBullet();
-
+                bulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
             }
         }
@@ -83,5 +97,14 @@ public class ShootMecanics : MonoBehaviour {
         laserLine.enabled = false;
     }
 
-    //https://learn.unity.com/tutorial/let-s-try-shooting-with-raycasts#
+    void OnGUI()
+    {
+        GUI.Label(new Rect((Screen.width/2), (Screen.height / 2), Screen.width, Screen.height), "+");
+        GUI.Label(new Rect(10, 10, 100, 50), bulletLeft.ToString() + "/" + magazineSize.ToString());
+
+        if (bulletLeft == 0)
+        {
+            GUI.Label(new Rect(10, 30, 100, 50), "Need to reload (R)");
+        }
+    }
 }
