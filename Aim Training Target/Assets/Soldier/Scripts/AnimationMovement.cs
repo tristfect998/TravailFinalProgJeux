@@ -123,7 +123,7 @@ namespace AimTrainingTarget.Soldier
             }
             #endregion
 
-            #region Speint
+            #region Sprint
             if (Input.GetAxisRaw("Sprint") == 1)
             {
                 vRunning = true;
