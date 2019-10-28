@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Target
+=======
+  - Weapon
+>>>>>>> origin/ManiementArmes
   layers:
   - Default
   - TransparentFX
