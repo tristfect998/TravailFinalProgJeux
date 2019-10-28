@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4918424856724924}
   - component: {fileID: 33904506418391984}
   - component: {fileID: 23291676306149102}
+  - component: {fileID: 114933800700023636}
   m_Layer: 0
   m_Name: AK74_OnCharacter
   m_TagString: Weapon
@@ -302,3 +303,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1882581233218442}
   m_Mesh: {fileID: 4300002, guid: bbb923237dc2f684c8766fa70669ec26, type: 3}
+--- !u!114 &114933800700023636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722651313867690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1269589fa1590b148a5b7167da906d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDamage: 1
+  fireDelay: 0.1
+  weaponRange: 50
+  magazineSize: 30
+  gunEnd: {fileID: 0}
+  fpsCamera: {fileID: 0}
