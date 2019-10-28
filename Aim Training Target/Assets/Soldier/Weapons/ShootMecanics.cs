@@ -90,21 +90,20 @@ public class ShootMecanics : MonoBehaviour {
         }
     }
 
+    public int GetAmmoLeft()
+    {
+        return bulletLeft;
+    }
+
+    public int GetMagazineSize()
+    {
+        return magazineSize;
+    }
+
     private IEnumerator ShootEffect()
     {
         laserLine.enabled = true;
         yield return shotDuration;
         laserLine.enabled = false;
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect((Screen.width/2), (Screen.height / 2), Screen.width, Screen.height), "+");
-        GUI.Label(new Rect(10, 10, 100, 50), bulletLeft.ToString() + "/" + magazineSize.ToString());
-
-        if (bulletLeft == 0)
-        {
-            GUI.Label(new Rect(10, 30, 100, 50), "Need to reload (R)");
-        }
     }
 }
