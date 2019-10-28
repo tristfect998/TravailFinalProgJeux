@@ -54,11 +54,9 @@ MonoBehaviour:
   Item:
   - ID: 0
     Name: M4
-    WeaponObject: {fileID: 1028108901834076, guid: 10dcadddd09dce24d9c947502e4a502b,
-      type: 2}
+    WeaponObject: {fileID: 100002, guid: f914ed7554feb9247b2434fd435693f7, type: 3}
     magazineSize: 30
   - ID: 1
     Name: AK-47
-    WeaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
-      type: 2}
+    WeaponObject: {fileID: 100000, guid: bbb923237dc2f684c8766fa70669ec26, type: 3}
     magazineSize: 35
