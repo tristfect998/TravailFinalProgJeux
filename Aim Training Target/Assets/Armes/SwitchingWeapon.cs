@@ -5,12 +5,11 @@ using UnityEngine;
 public class SwitchingWeapon : MonoBehaviour {
 
     private int currentWeaponId = 0;
-	// Use this for initialization
+
 	void Start () {
         InstantiateWeapon(0);
     }
 
-    // Update is called once per frame
     void Update () {
         if (Input.GetAxis("Weapon1") == 1)
         {
@@ -20,8 +19,7 @@ public class SwitchingWeapon : MonoBehaviour {
                 InstantiateWeapon(0);
             }
         }
-
-        if (Input.GetAxis("Weapon2") == 1)
+        else if (Input.GetAxis("Weapon2") == 1)
         {
             if (currentWeaponId != 1)
             {
@@ -41,8 +39,8 @@ public class SwitchingWeapon : MonoBehaviour {
 
     void DestroyCurrentHolding()
     {
-       /* GameObject currentHoldingWeapon = GetComponentInParent<GameObject>();
-        Destroy(currentHoldingWeapon); */
+       GameObject currentHoldingWeapon = GameObject.FindWithTag("Weapon");
+       Destroy(currentHoldingWeapon);
     }
 
 

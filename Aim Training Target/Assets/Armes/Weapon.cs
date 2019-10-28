@@ -8,5 +8,6 @@ public class Weapon {
     public int ID;
     public string Name;
     public GameObject WeaponObject;
+    public int magazineSize;
 
 }
