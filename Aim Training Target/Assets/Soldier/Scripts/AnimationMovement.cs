@@ -12,12 +12,17 @@ namespace AimTrainingTarget.Soldier
         bool vAiming = false;
         bool vWalking = false;
         bool vRunning = false;
+        bool HasAimed = false;
         bool vJumped = false;
         public static AudioClip crouchSound;
         static AudioSource audioSrc;
         static bool isPause;
         public GameObject rightHandObj;
         public GameObject leftHandObj;
+        public GameObject GunSlot;
+        public Vector3 AimingOffset;
+        public Quaternion AimingRotationOffset;
+        public Quaternion NotAimingRotationOffset;
         // Use this for initialization
         void Start()
         {
@@ -30,8 +35,8 @@ namespace AimTrainingTarget.Soldier
 
         void OnAnimatorIK(int layerIndex)
         {
-            if(vAiming)
-            {
+            //if(vAiming)
+            //{
                 if(rightHandObj != null)
                 {
                     anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
@@ -46,7 +51,7 @@ namespace AimTrainingTarget.Soldier
                     anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.transform.position);
                     anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.transform.rotation);
                 }
-            }
+            //}
         }
 
         // Update is called once per frame
@@ -112,6 +117,8 @@ namespace AimTrainingTarget.Soldier
             if (Input.GetAxisRaw("Aim") == 1)
             {
                 vAiming = true;
+                MoveGunToAim();
+                HasAimed = true;
             }
             else
             {
@@ -126,6 +133,7 @@ namespace AimTrainingTarget.Soldier
             {
                 anim.SetBool("isAiming", false);
             }
+
             #endregion
 
             #region Walking
@@ -215,6 +223,20 @@ namespace AimTrainingTarget.Soldier
                 }
             }
             #endregion
+        }
+
+        void MoveGunToAim()
+        {
+            if (HasAimed == false)
+            {
+                GunSlot.transform.position += AimingOffset;
+                GunSlot.transform.rotation = AimingRotationOffset;
+            }
+            /*else
+            {
+                GunSlot.transform.position -= AimingOffset;
+                GunSlot.transform.rotation = NotAimingRotationOffset;
+            }*/
         }
     }
 }
