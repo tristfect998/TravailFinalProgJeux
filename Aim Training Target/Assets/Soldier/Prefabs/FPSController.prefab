@@ -2333,9 +2333,10 @@ AudioSource:
   m_GameObject: {fileID: 1940284484467024}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 534794ccd3ba12640afc2c893a59cf40,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2598,6 +2599,7 @@ MonoBehaviour:
   AimingGunSlot: {fileID: 1601917927512360}
   HipFireGunSlot: {fileID: 1453269240390798}
   Crosshair: {fileID: 0}
+  audioSrc: {fileID: 0}
 --- !u!114 &114710644461415370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2699,8 +2701,8 @@ MonoBehaviour:
   m_FootstepSounds:
   - {fileID: 0}
   - {fileID: 0}
-  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_JumpSound: {fileID: 0}
+  m_LandSound: {fileID: 0}
 --- !u!120 &120317033174041128
 LineRenderer:
   m_ObjectHideFlags: 1
