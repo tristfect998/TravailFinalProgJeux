@@ -11,6 +11,7 @@ namespace AimTrainingTarget.Soldier
         bool vAxisProneInUse = false;
         bool vAiming = false;
         bool vWalking = false;
+        bool vWalkingBack = false;
         bool vRunning = false;
         bool HasAimed = false;
         bool vJumped = false;
@@ -125,15 +126,6 @@ namespace AimTrainingTarget.Soldier
                 vAiming = false;
             }
 
-            if (vAiming == true)
-            {
-                anim.SetBool("isAiming", true);
-            }
-            else
-            {
-                anim.SetBool("isAiming", false);
-            }
-
             #endregion
 
             #region Walking
@@ -153,6 +145,27 @@ namespace AimTrainingTarget.Soldier
             else
             {
                 anim.SetBool("isWalking", false);
+            }
+            #endregion
+
+
+            #region WalkingBack
+            if (Input.GetAxisRaw("Vertical") == -1)
+            {
+                vWalkingBack = true;
+            }
+            else
+            {
+                vWalkingBack = false;
+            }
+
+            if (vWalkingBack == true)
+            {
+                anim.SetBool("isWalkingBack", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkingBack", false);
             }
             #endregion
 
