@@ -30,7 +30,6 @@ namespace AimTrainingTarget.Soldier
         // Use this for initialization
         void Start()
         {
-            crouchSound = Resources.Load<AudioClip>("crouching sound");
             anim = GetComponent<Animator>();
             movementClip = Resources.Load<AudioClip>("crouching sound");
             audioSrc = GetComponent<AudioSource>();
