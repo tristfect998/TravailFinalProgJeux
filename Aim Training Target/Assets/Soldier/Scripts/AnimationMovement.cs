@@ -14,8 +14,7 @@ namespace AimTrainingTarget.Soldier
         bool vRunning = false;
         bool vJumped = false;
         bool gunPositionChanged = false;
-        public static AudioClip crouchSound;
-        static AudioSource audioSrc;
+        AudioClip movementClip;
         static bool isPause;
         public GameObject rightHandObj;
         public GameObject leftHandObj;
@@ -23,35 +22,32 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
+        public AudioSource audioSrc;
+
         // Use this for initialization
         void Start()
         {
-            crouchSound = Resources.Load<AudioClip>("crouching sound");
             anim = GetComponent<Animator>();
+            movementClip = Resources.Load<AudioClip>("crouching sound");
             audioSrc = GetComponent<AudioSource>();
-            audioSrc.clip = crouchSound;
-            
         }
 
         void OnAnimatorIK(int layerIndex)
         {
-            //if(vAiming)
-            //{
-                if(rightHandObj != null)
-                {
-                    anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                    anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.transform.position);
-                    anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.transform.rotation);
-                }
-                if (leftHandObj != null)
-                {
-                    anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-                    anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.transform.position);
-                    anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.transform.rotation);
-                }
-            //}
+            if (rightHandObj != null)
+            {
+                anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+                anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+                anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.transform.position);
+                anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.transform.rotation);
+            }
+            if (leftHandObj != null)
+            {
+                anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+                anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.transform.position);
+                anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.transform.rotation);
+            }
         }
 
         // Update is called once per frame
@@ -60,9 +56,9 @@ namespace AimTrainingTarget.Soldier
             #region Crouch
             if (Input.GetAxisRaw("Crouch") == 1)
             {
-                audioSrc.Play();
                 if (vAxisCrouchInUse == false)
                 {
+                    audioSrc.PlayOneShot(movementClip);
                     if (!anim.GetBool("isCrouch"))
                     {
                         anim.SetBool("isCrouch", true);
@@ -88,9 +84,9 @@ namespace AimTrainingTarget.Soldier
             #region Prone
             if (Input.GetAxisRaw("Prone") == 1)
             {
-                audioSrc.Play();
                 if (vAxisProneInUse == false)
                 {
+                    audioSrc.PlayOneShot(movementClip);
                     if (!anim.GetBool("isProne"))
                     {
                         anim.SetBool("isCrouch", false);
@@ -172,7 +168,6 @@ namespace AimTrainingTarget.Soldier
             #region Jump
             if (Input.GetAxisRaw("Jump") == 1)
             {
-                audioSrc.Play();
                 if (vJumped == false)
                 {
                     if (anim.GetBool("isStanding"))
@@ -200,7 +195,7 @@ namespace AimTrainingTarget.Soldier
             #region Escape
             if (Input.GetKeyDown("escape"))
             {
-                if(isPause)
+                if (isPause)
                 {
                     Time.timeScale = 1;
                     //EscapeMenu.SetActive(false);
@@ -218,9 +213,9 @@ namespace AimTrainingTarget.Soldier
 
         void MoveGunToAim()
         {
-            if(vAiming == true)
+            if (vAiming == true)
             {
-                if(!gunPositionChanged)
+                if (!gunPositionChanged)
                 {
                     gunPositionChanged = true;
                     GunSlot.transform.localPosition = AimingGunSlot.transform.localPosition;
