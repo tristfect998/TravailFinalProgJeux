@@ -473,7 +473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunDamage: 1
-  fireDelay: 0.2
+  fireDelay: 0.1
   weaponRange: 50
   magazineSize: 20
-  gunEnd: {fileID: 0}
