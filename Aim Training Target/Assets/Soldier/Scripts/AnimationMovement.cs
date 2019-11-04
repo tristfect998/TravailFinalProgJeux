@@ -11,6 +11,9 @@ namespace AimTrainingTarget.Soldier
         bool vAxisProneInUse = false;
         bool vAiming = false;
         bool vWalking = false;
+        bool vWalkingRight = false;
+        bool vWalkingLeft = false;
+        bool vWalkingBack = false;
         bool vRunning = false;
         bool vJumped = false;
         bool gunPositionChanged = false;
@@ -123,8 +126,6 @@ namespace AimTrainingTarget.Soldier
             {
                 vAiming = false;
                 MoveGunToAim();
-            }
-
             #endregion
 
             #region Walking
@@ -144,6 +145,66 @@ namespace AimTrainingTarget.Soldier
             else
             {
                 anim.SetBool("isWalking", false);
+            }
+            #endregion
+
+            #region WalkingRight
+            if (Input.GetAxisRaw("Horizontal") == 1)
+            {
+                vWalkingRight = true;
+            }
+            else
+            {
+                vWalkingRight = false;
+            }
+
+            if (vWalkingRight == true)
+            {
+                anim.SetBool("isWalkingRight", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkingRight", false);
+            }
+            #endregion
+
+            #region WalkingLeft
+            if (Input.GetAxisRaw("Horizontal") == -1)
+            {
+                vWalkingLeft = true;
+            }
+            else
+            {
+                vWalkingLeft = false;
+            }
+
+            if (vWalkingLeft == true)
+            {
+                anim.SetBool("isWalkingLeft", true);
+            }
+            else
+            {               
+                anim.SetBool("isWalkingLeft", false);
+            }
+            #endregion
+
+            #region WalkingBack
+            if (Input.GetAxisRaw("Vertical") == -1)
+            {
+                vWalkingBack = true;
+            }
+            else
+            {
+                vWalkingBack = false;
+            }
+
+            if (vWalkingBack == true)
+            {
+                anim.SetBool("isWalkingBack", true);
+            }
+            else
+            {
+                anim.SetBool("isWalkingBack", false);
             }
             #endregion
 
