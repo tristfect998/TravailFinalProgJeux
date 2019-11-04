@@ -22,7 +22,7 @@ public class ShootMecanics : MonoBehaviour {
             ProcessFire();
         }
 
-        if (Input.GetAxis("Reload") != 0 && bulletLeft != magazineSize)
+        if (Input.GetAxis("Reload") != 0 && Input.GetAxis("Fire1") == 0 && bulletLeft != magazineSize)
         {
             bulletLeft = magazineSize;
         }
