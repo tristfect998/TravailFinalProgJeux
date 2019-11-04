@@ -560,6 +560,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1453269240390798
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4625890335580694}
+  m_Layer: 0
+  m_Name: HipfireGunSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1482583045749990
 GameObject:
   m_ObjectHideFlags: 1
@@ -720,6 +735,21 @@ GameObject:
   - component: {fileID: 4550812443323056}
   m_Layer: 0
   m_Name: mixamorig:LeftForeArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1601917927512360
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4840780995076492}
+  m_Layer: 0
+  m_Name: AimGunSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1627,6 +1657,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4576393300138330}
+  - {fileID: 4840780995076492}
+  - {fileID: 4625890335580694}
   m_Father: {fileID: 4040189200283694}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1893,6 +1925,19 @@ Transform:
   m_Father: {fileID: 4446932661126870}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4625890335580694
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1453269240390798}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.068, y: -0.26100004, z: 0.498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4425446784899246}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4639929620624382
 Transform:
   m_ObjectHideFlags: 1
@@ -2020,6 +2065,19 @@ Transform:
   m_Father: {fileID: 4664580351860628}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4840780995076492
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1601917927512360}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: -0.136, z: 0.357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4425446784899246}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!4 &4857374221028612
 Transform:
   m_ObjectHideFlags: 1
@@ -2537,9 +2595,11 @@ MonoBehaviour:
   rightHandObj: {fileID: 1857278107204790}
   leftHandObj: {fileID: 1857278107204790}
   GunSlot: {fileID: 1857278107204790}
-  AimingOffset: {x: 0, y: 0.1, z: 0}
-  AimingRotationOffset: {x: 0, y: 180, z: -6, w: 0}
-  NotAimingRotationOffset: {x: 0, y: 180, z: 0, w: 0}
+  AimingGunSlot: {fileID: 1601917927512360}
+  HipFireGunSlot: {fileID: 1453269240390798}
+  Crosshair: {fileID: 0}
+  RightHand: {fileID: 1824627334934480}
+  LeftHand: {fileID: 1691976821606618}
 --- !u!114 &114710644461415370
 MonoBehaviour:
   m_ObjectHideFlags: 1

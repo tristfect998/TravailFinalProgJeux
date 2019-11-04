@@ -12,17 +12,17 @@ namespace AimTrainingTarget.Soldier
         bool vAiming = false;
         bool vWalking = false;
         bool vRunning = false;
-        bool HasAimed = false;
         bool vJumped = false;
+        bool gunPositionChanged = false;
         public static AudioClip crouchSound;
         static AudioSource audioSrc;
         static bool isPause;
         public GameObject rightHandObj;
         public GameObject leftHandObj;
         public GameObject GunSlot;
-        public Vector3 AimingOffset;
-        public Quaternion AimingRotationOffset;
-        public Quaternion NotAimingRotationOffset;
+        public GameObject AimingGunSlot;
+        public GameObject HipFireGunSlot;
+        public GameObject Crosshair;
         // Use this for initialization
         void Start()
         {
@@ -114,24 +114,15 @@ namespace AimTrainingTarget.Soldier
             #endregion
 
             #region Aiming
-            if (Input.GetAxisRaw("Aim") == 1)
+            if (Input.GetAxisRaw("Aim") != 0)
             {
                 vAiming = true;
                 MoveGunToAim();
-                HasAimed = true;
             }
             else
             {
                 vAiming = false;
-            }
-
-            if (vAiming == true)
-            {
-                anim.SetBool("isAiming", true);
-            }
-            else
-            {
-                anim.SetBool("isAiming", false);
+                MoveGunToAim();
             }
 
             #endregion
@@ -227,16 +218,23 @@ namespace AimTrainingTarget.Soldier
 
         void MoveGunToAim()
         {
-            if (HasAimed == false)
+            if(vAiming == true)
             {
-                GunSlot.transform.position += AimingOffset;
-                GunSlot.transform.rotation = AimingRotationOffset;
+                if(!gunPositionChanged)
+                {
+                    gunPositionChanged = true;
+                    GunSlot.transform.localPosition = AimingGunSlot.transform.localPosition;
+                    GunSlot.transform.localRotation = AimingGunSlot.transform.localRotation;
+                    Crosshair.SetActive(false);
+                }
             }
-            /*else
+            else
             {
-                GunSlot.transform.position -= AimingOffset;
-                GunSlot.transform.rotation = NotAimingRotationOffset;
-            }*/
+                gunPositionChanged = false;
+                GunSlot.transform.localPosition = HipFireGunSlot.transform.localPosition;
+                GunSlot.transform.localRotation = HipFireGunSlot.transform.localRotation;
+                Crosshair.SetActive(true);
+            }
         }
     }
 }
