@@ -33,27 +33,27 @@ namespace AimTrainingTarget.Soldier
             anim = GetComponent<Animator>();
             audioSrc = GetComponent<AudioSource>();
             audioSrc.clip = crouchSound;
-            
+
         }
 
         void OnAnimatorIK(int layerIndex)
         {
             //if(vAiming)
             //{
-                if(rightHandObj != null)
-                {
-                    anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                    anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.transform.position);
-                    anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.transform.rotation);
-                }
-                if (leftHandObj != null)
-                {
-                    anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-                    anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.transform.position);
-                    anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.transform.rotation);
-                }
+            if (rightHandObj != null)
+            {
+                anim.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+                anim.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+                anim.SetIKPosition(AvatarIKGoal.RightHand, rightHandObj.transform.position);
+                anim.SetIKRotation(AvatarIKGoal.RightHand, rightHandObj.transform.rotation);
+            }
+            if (leftHandObj != null)
+            {
+                anim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                anim.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+                anim.SetIKPosition(AvatarIKGoal.LeftHand, leftHandObj.transform.position);
+                anim.SetIKRotation(AvatarIKGoal.LeftHand, leftHandObj.transform.rotation);
+            }
             //}
         }
 
@@ -126,6 +126,7 @@ namespace AimTrainingTarget.Soldier
             {
                 vAiming = false;
                 MoveGunToAim();
+            }
             #endregion
 
             #region Walking
@@ -183,7 +184,7 @@ namespace AimTrainingTarget.Soldier
                 anim.SetBool("isWalkingLeft", true);
             }
             else
-            {               
+            {
                 anim.SetBool("isWalkingLeft", false);
             }
             #endregion
@@ -261,7 +262,7 @@ namespace AimTrainingTarget.Soldier
             #region Escape
             if (Input.GetKeyDown("escape"))
             {
-                if(isPause)
+                if (isPause)
                 {
                     Time.timeScale = 1;
                     //EscapeMenu.SetActive(false);
@@ -279,9 +280,9 @@ namespace AimTrainingTarget.Soldier
 
         void MoveGunToAim()
         {
-            if(vAiming == true)
+            if (vAiming == true)
             {
-                if(!gunPositionChanged)
+                if (!gunPositionChanged)
                 {
                     gunPositionChanged = true;
                     GunSlot.transform.localPosition = AimingGunSlot.transform.localPosition;
