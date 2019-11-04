@@ -170,7 +170,6 @@ namespace AimTrainingTarget.Soldier
             }
             #endregion
 
-
             #region WalkingLeft
             if (Input.GetAxisRaw("Horizontal") == -1)
             {
@@ -186,7 +185,7 @@ namespace AimTrainingTarget.Soldier
                 anim.SetBool("isWalkingLeft", true);
             }
             else
-            {
+            {               
                 anim.SetBool("isWalkingLeft", false);
             }
             #endregion
