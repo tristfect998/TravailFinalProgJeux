@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-
 public class ShootMecanics : MonoBehaviour {
 
     public int gunDamage = 1;
@@ -14,17 +12,7 @@ public class ShootMecanics : MonoBehaviour {
     public int magazineSize = 30;
     private int bulletLeft;
 
-    public Transform gunEnd;
-    public Camera fpsCamera;
-
-    private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
-    private AudioSource gunAudio;
-    private LineRenderer laserLine;
-
-
 	void Start () {
-        laserLine = GetComponent<LineRenderer>();
-        gunAudio = GetComponent<AudioSource>();
         bulletLeft = magazineSize;
 
     }
@@ -57,25 +45,15 @@ public class ShootMecanics : MonoBehaviour {
 
     private void ShootBullet()
     {
-        StartCoroutine(ShootEffect());
-
-        Vector3 rayOrigin = fpsCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+        Vector3 rayOrigin = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        laserLine.SetPosition(0, gunEnd.position);
-
-        if (Physics.Raycast(rayOrigin, fpsCamera.transform.forward, out hit, weaponRange))
+        if (Physics.Raycast(rayOrigin, Camera.main.transform.forward, out hit, weaponRange))
         {
-            laserLine.SetPosition(1, hit.point);
-
             if (hit.transform.tag == "Target")
             {
                 TakeDamage(hit.transform.gameObject);
             }
-        }
-        else
-        {
-            laserLine.SetPosition(1, rayOrigin + (fpsCamera.transform.forward * weaponRange));
         }
     }
 
@@ -100,12 +78,5 @@ public class ShootMecanics : MonoBehaviour {
     public int GetMagazineSize()
     {
         return magazineSize;
-    }
-
-    private IEnumerator ShootEffect()
-    {
-        laserLine.enabled = true;
-        yield return shotDuration;
-        laserLine.enabled = false;
     }
 }

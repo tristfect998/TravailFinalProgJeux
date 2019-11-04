@@ -5,20 +5,60 @@ using UnityEngine.UI;
 
 public class AmmosUI : MonoBehaviour {
 
-    Text ammoLeftText;
-    Text magazineSize;
+    public Text ammoLeftText;
+    public Text magazineSize;
     ShootMecanics gunMecanics;
 
-	void Start () {
-        gunMecanics = GetComponent<ShootMecanics>();
+    bool weaponInHand = false;
 
-        ammoLeftText = this.transform.Find("BulletLeftText").GetComponent<Text>();
-        magazineSize = this.transform.Find("MagazineBulletsText").GetComponent<Text>();
-
-        magazineSize.text = gunMecanics.GetMagazineSize().ToString();
+    void Start()
+    {
+        //if (GameObject.FindGameObjectWithTag("Weapon") != null)
+        //{
+        //    gunMecanics = GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShootMecanics>();
+        //    magazineSize.text = gunMecanics.GetMagazineSize().ToString();
+        //    weaponInHand = true;
+        //}
+        //else
+        //{
+        //    weaponInHand = false;
+        //}
     }
-	
-	void Update () {
-		
-	}
+
+    void Update()
+    {
+        if (GameObject.FindGameObjectWithTag("Weapon") != null)
+        {
+            gunMecanics = GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShootMecanics>();
+            magazineSize.text = gunMecanics.GetMagazineSize().ToString();
+            weaponInHand = true;
+        }
+        else
+        {
+            weaponInHand = false;
+        }
+
+        if (weaponInHand)
+        {
+            ammoLeftText.text = gunMecanics.GetAmmoLeft().ToString();
+
+            if (gunMecanics.GetAmmoLeft() > 0 && gunMecanics.GetAmmoLeft() <= CalculateLowAmmoNumber())
+            {
+                ammoLeftText.color = new Color32(255, 80, 80, 255);
+            }
+            else if (gunMecanics.GetAmmoLeft() == 0)
+            {
+                ammoLeftText.color = new Color32(255, 10, 10, 255);
+            }
+            else
+            {
+                ammoLeftText.color = Color.white;
+            }
+        }
+    }
+
+    private int CalculateLowAmmoNumber()
+    {
+        return 10 * gunMecanics.GetMagazineSize() / 100;
+    }
 }

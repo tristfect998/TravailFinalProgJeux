@@ -315,8 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunDamage: 1
-  fireDelay: 0.1
+  fireDelay: 0.3
   weaponRange: 50
   magazineSize: 30
   gunEnd: {fileID: 0}
-  fpsCamera: {fileID: 0}

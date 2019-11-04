@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4028615040951944}
   - component: {fileID: 33553233384738472}
   - component: {fileID: 23890856919830942}
+  - component: {fileID: 114838828788652230}
   m_Layer: 0
   m_Name: M4_8_OnCharacter
   m_TagString: Weapon
@@ -460,3 +461,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5863e1dcabcdeff4aa31c0a3e7dbea6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114838828788652230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1028108901834076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1269589fa1590b148a5b7167da906d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunDamage: 1
+  fireDelay: 0.2
+  weaponRange: 50
+  magazineSize: 20
+  gunEnd: {fileID: 0}
