@@ -13,16 +13,7 @@ public class AmmosUI : MonoBehaviour {
 
     void Start()
     {
-        //if (GameObject.FindGameObjectWithTag("Weapon") != null)
-        //{
-        //    gunMecanics = GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShootMecanics>();
-        //    magazineSize.text = gunMecanics.GetMagazineSize().ToString();
-        //    weaponInHand = true;
-        //}
-        //else
-        //{
-        //    weaponInHand = false;
-        //}
+
     }
 
     void Update()

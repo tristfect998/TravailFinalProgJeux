@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Target : MonoBehaviour, Damage {
 
+    public GameObject explosion;
     public int lifeTotal = 1;
+    
+    private bool isDestroy = false;
 
     public void TakeDamage(int damage)
     {
@@ -18,7 +21,12 @@ public class Target : MonoBehaviour, Damage {
 
     private void Die()
     {
-        Destroy(gameObject);
+        if (!isDestroy)
+        {
+            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            isDestroy = true;
+        }
     }
 
     protected void SetLife(int _lifeTotal)
