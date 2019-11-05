@@ -256,21 +256,21 @@ namespace AimTrainingTarget.Soldier
             #endregion
 
             #region Escape
-            if (Input.GetKeyDown("escape"))
-            {
-                if (isPause)
-                {
-                    Time.timeScale = 1;
-                    //EscapeMenu.SetActive(false);
-                    isPause = false;
-                }
-                else
-                {
-                    Time.timeScale = 0;
-                    //EscapeMenu.SetActive(true);                    
-                    isPause = true;
-                }
-            }
+            //if (Input.GetKeyDown("escape"))
+            //{
+            //    if (isPause)
+            //    {
+            //        Time.timeScale = 1;
+            //        //EscapeMenu.SetActive(false);
+            //        isPause = false;
+            //    }
+            //    else
+            //    {
+            //        Time.timeScale = 0;
+            //        //EscapeMenu.SetActive(true);                    
+            //        isPause = true;
+            //    }
+            //}
             #endregion
         }
 

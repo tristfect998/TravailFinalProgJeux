@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb941164de1ccf5439f5aeb26a4679d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorIndex: 1
+  colorIndex: 0
 --- !u!114 &114166951351963336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb941164de1ccf5439f5aeb26a4679d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorIndex: 0
+  colorIndex: 1
 --- !u!137 &137270228546219004
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
