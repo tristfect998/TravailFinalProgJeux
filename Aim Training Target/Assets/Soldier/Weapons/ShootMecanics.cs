@@ -11,10 +11,14 @@ public class ShootMecanics : MonoBehaviour {
 
     public int magazineSize = 30;
     private int bulletLeft;
+    
+    private AudioSource audioSource;
+    public AudioClip CurrentGunShotSound;
+    public AudioClip ReloadClip;
 
 	void Start () {
         bulletLeft = magazineSize;
-
+        audioSource = GetComponent<AudioSource>();
     }
 	void Update () {
         if (bulletLeft > 0)
@@ -24,6 +28,7 @@ public class ShootMecanics : MonoBehaviour {
 
         if (Input.GetAxis("Reload") != 0 && Input.GetAxis("Fire1") == 0 && bulletLeft != magazineSize)
         {
+            audioSource.PlayOneShot(ReloadClip);
             bulletLeft = magazineSize;
         }
     }
@@ -37,6 +42,7 @@ public class ShootMecanics : MonoBehaviour {
             if (delayBeforeNextFire <= 0)
             {
                 ShootBullet();
+                audioSource.PlayOneShot(CurrentGunShotSound);
                 bulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
             }

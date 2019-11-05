@@ -17,6 +17,7 @@ namespace AimTrainingTarget.Soldier
         bool vRunning = false;
         bool vJumped = false;
         bool gunPositionChanged = false;
+        AudioSource audioSrc;
         AudioClip movementClip;
         static bool isPause;
         public GameObject rightHandObj;
@@ -25,7 +26,6 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
-        public AudioSource audioSrc;
 
         // Use this for initialization
         void Start()
@@ -280,6 +280,7 @@ namespace AimTrainingTarget.Soldier
             {
                 if (!gunPositionChanged)
                 {
+                    audioSrc.PlayOneShot(movementClip);
                     gunPositionChanged = true;
                     GunSlot.transform.localPosition = AimingGunSlot.transform.localPosition;
                     GunSlot.transform.localRotation = AimingGunSlot.transform.localRotation;

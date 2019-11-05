@@ -4,37 +4,42 @@ using UnityEngine;
 
 public class SwitchingWeapon : MonoBehaviour {
 
-    private int currentWeaponId = 0;
-
-	void Start () {
+    private WeaponDataBase controller;
+	AudioSource audioSource;
+	public AudioClip sound;
+	
+    void Start () {
+        controller = FindObjectOfType<WeaponDataBase>();
         InstantiateWeapon(0);
+		audioSource = GetComponent<AudioSource>();
     }
 
     void Update () {
         if (Input.GetAxis("Weapon1") == 1)
         {
-            if (currentWeaponId != 0)
+            if (controller.currentWeaponId != 0)
             {
                 DestroyCurrentHolding();
                 InstantiateWeapon(0);
+				audioSource.PlayOneShot(sound);
             }
         }
         else if (Input.GetAxis("Weapon2") == 1)
         {
-            if (currentWeaponId != 1)
+            if (controller.currentWeaponId != 1)
             {
                 DestroyCurrentHolding();
                 InstantiateWeapon(1);
+				audioSource.PlayOneShot(sound);				
             }
         }
     }
 
     void InstantiateWeapon(int idArme)
     {
-        WeaponDataBase weaponDataBase = FindObjectOfType<WeaponDataBase>();
-        GameObject arme = weaponDataBase.RecupererArmePrefab(idArme);
+        GameObject arme = controller.RecupererArmePrefab(idArme);
         Instantiate(arme, transform);
-        currentWeaponId = idArme;
+        controller.currentWeaponId = idArme;
     }
 
     void DestroyCurrentHolding()
