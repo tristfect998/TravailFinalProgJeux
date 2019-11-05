@@ -1050,6 +1050,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4576393300138330}
   - component: {fileID: 114710644461415370}
+  - component: {fileID: 82132720693022502}
   m_Layer: 0
   m_Name: GunSlot
   m_TagString: Untagged
@@ -1128,9 +1129,9 @@ GameObject:
   - component: {fileID: 143626399520441916}
   - component: {fileID: 114723671977598876}
   - component: {fileID: 54629410607791316}
-  - component: {fileID: 82315401524954634}
   - component: {fileID: 95257465501731540}
   - component: {fileID: 114473928526607050}
+  - component: {fileID: 82571207296663580}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -2325,18 +2326,18 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123733695374836}
   m_Enabled: 1
---- !u!82 &82315401524954634
+--- !u!82 &82132720693022502
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1940284484467024}
+  m_GameObject: {fileID: 1857278107204790}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 534794ccd3ba12640afc2c893a59cf40,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2381,7 +2382,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2390,7 +2391,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2420,7 +2421,7 @@ AudioSource:
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
 --- !u!82 &82509947480276736
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2430,6 +2431,102 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &82571207296663580
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1940284484467024}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 534794ccd3ba12640afc2c893a59cf40,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2557,16 +2654,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item:
-  - ID: 0
-    Name: M4
-    WeaponObject: {fileID: 1028108901834076, guid: 10dcadddd09dce24d9c947502e4a502b,
+  - id: 0
+    name: M4
+    weaponObject: {fileID: 1028108901834076, guid: 10dcadddd09dce24d9c947502e4a502b,
+      type: 2}
+    magazineSize: 20
+    fireDelay: 0.1
+    weaponRange: 30
+    gunDamage: 1
+  - id: 1
+    name: AK47
+    weaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
       type: 2}
     magazineSize: 30
-  - ID: 1
-    Name: AK-47
-    WeaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
-      type: 2}
-    magazineSize: 35
+    fireDelay: 0.3
+    weaponRange: 50
+    gunDamage: 1
+  currentWeaponId: 0
 --- !u!114 &114453904126866280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2582,6 +2686,8 @@ MonoBehaviour:
   fireDelay: 0.1
   weaponRange: 50
   magazineSize: 30
+  CurrentGunShotSound: {fileID: 0}
+  ReloadClip: {fileID: 0}
 --- !u!114 &114473928526607050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2599,7 +2705,6 @@ MonoBehaviour:
   AimingGunSlot: {fileID: 1601917927512360}
   HipFireGunSlot: {fileID: 1453269240390798}
   Crosshair: {fileID: 0}
-  audioSrc: {fileID: 0}
 --- !u!114 &114710644461415370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2611,6 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b509dfb86598242a596fef63d87370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: a6f4275427bbfad46856c68d5d6e3600, type: 3}
 --- !u!114 &114723671977598876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2701,8 +2807,8 @@ MonoBehaviour:
   m_FootstepSounds:
   - {fileID: 0}
   - {fileID: 0}
-  m_JumpSound: {fileID: 0}
-  m_LandSound: {fileID: 0}
+  m_JumpSound: {fileID: 8300000, guid: d962dfda531a63c48970727e6c40ac5b, type: 3}
+  m_LandSound: {fileID: 8300000, guid: d962dfda531a63c48970727e6c40ac5b, type: 3}
 --- !u!120 &120317033174041128
 LineRenderer:
   m_ObjectHideFlags: 1
