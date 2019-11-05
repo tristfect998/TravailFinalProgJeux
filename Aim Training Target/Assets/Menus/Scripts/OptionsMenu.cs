@@ -61,6 +61,6 @@ public class OptionsMenu : MonoBehaviour
 
     public void LoadCharacterColorPickers()
     {
-        SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(3, LoadSceneMode.Single);
     }
 }

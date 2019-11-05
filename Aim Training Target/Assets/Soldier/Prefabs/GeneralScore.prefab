@@ -9,63 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1363018187414362}
+  m_RootGameObject: {fileID: 1779662887877234}
   m_IsPrefabAsset: 1
---- !u!1 &1363018187414362
+--- !u!1 &1779662887877234
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4259507915362164}
-  - component: {fileID: 114011065175416166}
+  - component: {fileID: 4921984589530326}
+  - component: {fileID: 114996842592482350}
   m_Layer: 0
-  m_Name: ItemController
+  m_Name: GeneralScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4259507915362164
+--- !u!4 &4921984589530326
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363018187414362}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.068, y: -1.4219999, z: -0.36200002}
+  m_GameObject: {fileID: 1779662887877234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114011065175416166
+--- !u!114 &114996842592482350
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1363018187414362}
+  m_GameObject: {fileID: 1779662887877234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b3983e6bdf0fe45ab2777f5b8baa6d, type: 3}
+  m_Script: {fileID: 11500000, guid: bd6f57e6922fb9143bb55547ccfecea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item:
-  - id: 0
-    name: M4
-    weaponObject: {fileID: 1028108901834076, guid: 10dcadddd09dce24d9c947502e4a502b,
-      type: 2}
-    magazineSize: 20
-    fireDelay: 0.1
-    weaponRange: 30
-    gunDamage: 1
-  - id: 1
-    name: AK47
-    weaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
-      type: 2}
-    magazineSize: 30
-    fireDelay: 0.3
-    weaponRange: 50
-    gunDamage: 1
-  currentWeaponId: 0

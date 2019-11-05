@@ -29,7 +29,7 @@ public class Target : MonoBehaviour, Damage {
     {
         if (!isDestroy)
         {
-            Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+            Instantiate(explosion, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z), Quaternion.identity);
             Destroy(gameObject);
             isDestroy = true;
             generalScore.AddScore();
