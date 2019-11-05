@@ -1418,7 +1418,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345719349}
-  - component: {fileID: 345719350}
   m_Layer: 5
   m_Name: JoiningMenu
   m_TagString: Untagged
@@ -1446,17 +1445,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000030517578, y: -0.000045776367}
   m_SizeDelta: {x: 700.00006, y: 272.82233}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &345719350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345719348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb1f834ca3303f4d8192e457d6ca1a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &424195022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,7 +3791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &887957282
 RectTransform:
   m_ObjectHideFlags: 0
