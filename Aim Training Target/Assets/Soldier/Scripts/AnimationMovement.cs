@@ -19,7 +19,7 @@ namespace AimTrainingTarget.Soldier
         bool gunPositionChanged = false;
         AudioSource audioSrc;
         AudioClip movementClip;
-        static bool isPause;
+        bool isPause;
         public GameObject rightHandObj;
         public GameObject leftHandObj;
         public GameObject GunSlot;
@@ -33,7 +33,7 @@ namespace AimTrainingTarget.Soldier
             anim = GetComponent<Animator>();
             movementClip = Resources.Load<AudioClip>("crouching sound");
             audioSrc = GetComponent<AudioSource>();
-
+            isPause = false;
         }
 
         void OnAnimatorIK(int layerIndex)
@@ -256,21 +256,21 @@ namespace AimTrainingTarget.Soldier
             #endregion
 
             #region Escape
-            //if (Input.GetKeyDown("escape"))
-            //{
-            //    if (isPause)
-            //    {
-            //        Time.timeScale = 1;
-            //        //EscapeMenu.SetActive(false);
-            //        isPause = false;
-            //    }
-            //    else
-            //    {
-            //        Time.timeScale = 0;
-            //        //EscapeMenu.SetActive(true);                    
-            //        isPause = true;
-            //    }
-            //}
+            if (Input.GetKeyDown("escape"))
+            {
+                if (isPause)
+                {
+                    //Time.timeScale = 1;
+                    //EscapeMenu.SetActive(false);
+                    isPause = false;
+                }
+                else
+                {
+                    //Time.timeScale = 0;
+                    //EscapeMenu.SetActive(true);                    
+                    isPause = true;
+                }
+            }
             #endregion
         }
 
