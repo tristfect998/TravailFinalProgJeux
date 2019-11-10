@@ -17,9 +17,9 @@ namespace AimTrainingTarget.Soldier
         bool vRunning = false;
         bool vJumped = false;
         bool gunPositionChanged = false;
-        AudioSource audioSrc;
-        AudioClip movementClip;
         bool isPause;
+        AudioSource audioSrc;
+        public AudioClip movementClip;
         public GameObject rightHandObj;
         public GameObject leftHandObj;
         public GameObject GunSlot;
@@ -27,11 +27,9 @@ namespace AimTrainingTarget.Soldier
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
 
-        // Use this for initialization
         void Start()
         {
             anim = GetComponent<Animator>();
-            movementClip = Resources.Load<AudioClip>("crouching sound");
             audioSrc = GetComponent<AudioSource>();
             isPause = false;
         }
@@ -54,7 +52,6 @@ namespace AimTrainingTarget.Soldier
             }
         }
 
-        // Update is called once per frame
         void Update()
         {
             #region Crouch
