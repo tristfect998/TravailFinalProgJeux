@@ -36,18 +36,21 @@ public class AmmosUI : MonoBehaviour {
 
             shootMecanics = gunSlot.GetComponentInChildren<ShootMecanics>();
             shootMecanics.BulletShot.AddListener(BulletShot);
+            shootMecanics.ReloadGun.AddListener(ReloadGun);
+
+            ProcessAmmoLeft();
         }
     }
 
-    void BulletShot()
+    void ProcessAmmoLeft()
     {
-        ammoLeftText.text = shootMecanics.BulletLeft.ToString();
+        ammoLeftText.text = shootMecanics.GetBulletLeft().ToString();
 
-        if (shootMecanics.BulletLeft > 0 && shootMecanics.BulletLeft <= CalculateLowAmmoNumber())
+        if (shootMecanics.GetBulletLeft() > 0 && shootMecanics.GetBulletLeft() <= CalculateLowAmmoNumber())
         {
             ammoLeftText.color = new Color32(255, 80, 80, 255);
         }
-        else if (shootMecanics.BulletLeft == 0)
+        else if (shootMecanics.GetBulletLeft() == 0)
         {
             ammoLeftText.color = new Color32(255, 10, 10, 255);
         }
@@ -55,6 +58,16 @@ public class AmmosUI : MonoBehaviour {
         {
             ammoLeftText.color = Color.white;
         }
+    }
+
+    void BulletShot()
+    {
+        ProcessAmmoLeft();
+    }
+
+    void ReloadGun()
+    {
+        ProcessAmmoLeft();
     }
 
     private int CalculateLowAmmoNumber()

@@ -9,19 +9,21 @@ public class ShootMecanics : MonoBehaviour {
     float fireDelay;
     float weaponRange;
     int gunDamage;
+    int bulletLeft;
 
     float delayBeforeNextFire = 0;
 
     SwitchingWeapon gunSlot;
     WeaponDataBase weaponDataBase;
 
+    Weapon currentWeapon = null;
+
     private AudioSource audioSource;
-    public AudioClip CurrentGunShotSound;
+    AudioClip CurrentGunShotSound;
     public AudioClip ReloadClip;
 
-    public int BulletLeft { get; set; }
-
     public UnityEvent BulletShot;
+    public UnityEvent ReloadGun;
 
     void Start()
     {
@@ -39,36 +41,40 @@ public class ShootMecanics : MonoBehaviour {
         {
             BulletShot = new UnityEvent();
         }
+        if (ReloadGun == null)
+        {
+            ReloadGun = new UnityEvent();
+        }
     }
 
     void WeaponSwitching()
     {
         if (gunSlot.WeaponInHand)
         {
-            Weapon currentWeapon = weaponDataBase.GetCurrentWeapon();
+            currentWeapon = weaponDataBase.GetCurrentWeapon();
 
             magazineSize = currentWeapon.magazineSize;
             fireDelay = currentWeapon.fireDelay;
             weaponRange = currentWeapon.weaponRange;
             gunDamage = currentWeapon.gunDamage;
-
-            BulletLeft = magazineSize;
+            bulletLeft = currentWeapon.bulletLeft;
+            CurrentGunShotSound = currentWeapon.gunAudio;
         }
     }
 
     void Update()
     {
-        Debug.Log(BulletLeft);
-        if (BulletLeft > 0)
+        if (bulletLeft > 0)
         {
             ProcessFire();
-            Debug.Log("Test");
         }
 
-        if (Input.GetButtonDown("Reload") && Input.GetButtonDown("Fire1") && BulletLeft != magazineSize)
+        if (Input.GetButtonDown("Reload") && Input.GetAxis("Fire1") == 0 && bulletLeft != magazineSize)
         {
             audioSource.PlayOneShot(ReloadClip);
-            BulletLeft = magazineSize;
+            bulletLeft = magazineSize;
+            currentWeapon.bulletLeft = magazineSize;
+            ReloadGun.Invoke();
         }
     }
 
@@ -76,15 +82,16 @@ public class ShootMecanics : MonoBehaviour {
     {
         delayBeforeNextFire -= Time.deltaTime;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetAxis("Fire1") != 0)
         {
             if (delayBeforeNextFire <= 0)
             {
                 ShootBullet();
-                BulletShot.Invoke();
                 audioSource.PlayOneShot(CurrentGunShotSound);
-                BulletLeft -= 1;
+                bulletLeft -= 1;
+                currentWeapon.bulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
+                BulletShot.Invoke();
             }
         }
     }
@@ -114,5 +121,10 @@ public class ShootMecanics : MonoBehaviour {
                 damage.TakeDamage(gunDamage);
             }
         }
+    }
+
+    public int GetBulletLeft()
+    {
+        return bulletLeft;
     }
 }

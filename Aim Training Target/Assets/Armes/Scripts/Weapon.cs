@@ -12,5 +12,7 @@ public class Weapon {
     public float fireDelay;
     public float weaponRange;
     public int gunDamage;
+    public int bulletLeft;
+    public AudioClip gunAudio;
 
 }

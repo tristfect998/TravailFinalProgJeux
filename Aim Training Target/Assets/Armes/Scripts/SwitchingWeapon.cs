@@ -64,7 +64,7 @@ public class SwitchingWeapon : MonoBehaviour {
 
     void DestroyCurrentHolding()
     {
-        GameObject currentHoldingWeapon = GetComponentInChildren<ShootMecanics>().gameObject;
+        GameObject currentHoldingWeapon = GameObject.FindGameObjectWithTag("Weapon");
         WeaponInHand = false;
         Destroy(currentHoldingWeapon);
     }
