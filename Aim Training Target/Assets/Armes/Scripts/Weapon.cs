@@ -13,7 +13,4 @@ public class Weapon {
     public float weaponRange;
     public int gunDamage;
 
-    //public int ID { get {return id;}}
-
-
 }

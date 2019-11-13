@@ -7,49 +7,58 @@ public class AmmosUI : MonoBehaviour {
 
     public Text ammoLeftText;
     public Text magazineSize;
-    ShootMecanics gunMecanics;
 
-    bool weaponInHand = false;
+    SwitchingWeapon gunSlot;
+    WeaponDataBase weaponDataBase;
+    ShootMecanics shootMecanics;
+
+    int magSize = 0;
 
     void Start()
     {
+        gunSlot = FindObjectOfType<SwitchingWeapon>();
+        gunSlot.WeaponHaveSwitched.AddListener(WeaponSwitching);
 
+        if (gunSlot != null)
+        {
+            weaponDataBase = gunSlot.GetComponentInChildren<WeaponDataBase>();
+        }
     }
 
-    void Update()
+    void WeaponSwitching()
     {
-        if (GameObject.FindGameObjectWithTag("Weapon") != null)
+        if (gunSlot.WeaponInHand)
         {
-            gunMecanics = GameObject.FindGameObjectWithTag("Weapon").GetComponent<ShootMecanics>();
-            magazineSize.text = gunMecanics.GetMagazineSize().ToString();
-            weaponInHand = true;
+            Weapon currentWeapon = weaponDataBase.GetCurrentWeapon();
+            magazineSize.text = currentWeapon.magazineSize.ToString();
+
+            magSize = currentWeapon.magazineSize;
+
+            shootMecanics = gunSlot.GetComponentInChildren<ShootMecanics>();
+            shootMecanics.BulletShot.AddListener(BulletShot);
+        }
+    }
+
+    void BulletShot()
+    {
+        ammoLeftText.text = shootMecanics.BulletLeft.ToString();
+
+        if (shootMecanics.BulletLeft > 0 && shootMecanics.BulletLeft <= CalculateLowAmmoNumber())
+        {
+            ammoLeftText.color = new Color32(255, 80, 80, 255);
+        }
+        else if (shootMecanics.BulletLeft == 0)
+        {
+            ammoLeftText.color = new Color32(255, 10, 10, 255);
         }
         else
         {
-            weaponInHand = false;
-        }
-
-        if (weaponInHand)
-        {
-            ammoLeftText.text = gunMecanics.GetAmmoLeft().ToString();
-
-            if (gunMecanics.GetAmmoLeft() > 0 && gunMecanics.GetAmmoLeft() <= CalculateLowAmmoNumber())
-            {
-                ammoLeftText.color = new Color32(255, 80, 80, 255);
-            }
-            else if (gunMecanics.GetAmmoLeft() == 0)
-            {
-                ammoLeftText.color = new Color32(255, 10, 10, 255);
-            }
-            else
-            {
-                ammoLeftText.color = Color.white;
-            }
+            ammoLeftText.color = Color.white;
         }
     }
 
     private int CalculateLowAmmoNumber()
     {
-        return 10 * gunMecanics.GetMagazineSize() / 100;
+        return 10 * magSize / 100;
     }
 }

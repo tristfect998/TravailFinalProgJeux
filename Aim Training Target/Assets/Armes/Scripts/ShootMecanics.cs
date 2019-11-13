@@ -1,35 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ShootMecanics : MonoBehaviour {
 
-    public int gunDamage = 1;
-    public float fireDelay = 0.1f;
-    private float delayBeforeNextFire = 0;
-    public float weaponRange = 50f;
+    int magazineSize;
+    float fireDelay;
+    float weaponRange;
+    int gunDamage;
 
-    public int magazineSize = 30;
-    private int bulletLeft;
-    
+    float delayBeforeNextFire = 0;
+
+    SwitchingWeapon gunSlot;
+    WeaponDataBase weaponDataBase;
+
     private AudioSource audioSource;
     public AudioClip CurrentGunShotSound;
     public AudioClip ReloadClip;
 
-	void Start () {
-        bulletLeft = magazineSize;
+    public int BulletLeft { get; set; }
+
+    public UnityEvent BulletShot;
+
+    void Start()
+    {
         audioSource = GetComponent<AudioSource>();
-    }
-	void Update () {
-        if (bulletLeft > 0)
+
+        gunSlot = FindObjectOfType<SwitchingWeapon>();
+        gunSlot.WeaponHaveSwitched.AddListener(WeaponSwitching);
+
+        if (gunSlot != null)
         {
-            ProcessFire();
+            weaponDataBase = gunSlot.GetComponentInChildren<WeaponDataBase>();
         }
 
-        if (Input.GetAxis("Reload") != 0 && Input.GetAxis("Fire1") == 0 && bulletLeft != magazineSize)
+        if (BulletShot == null)
+        {
+            BulletShot = new UnityEvent();
+        }
+    }
+
+    void WeaponSwitching()
+    {
+        if (gunSlot.WeaponInHand)
+        {
+            Weapon currentWeapon = weaponDataBase.GetCurrentWeapon();
+
+            magazineSize = currentWeapon.magazineSize;
+            fireDelay = currentWeapon.fireDelay;
+            weaponRange = currentWeapon.weaponRange;
+            gunDamage = currentWeapon.gunDamage;
+
+            BulletLeft = magazineSize;
+        }
+    }
+
+    void Update()
+    {
+        Debug.Log(BulletLeft);
+        if (BulletLeft > 0)
+        {
+            ProcessFire();
+            Debug.Log("Test");
+        }
+
+        if (Input.GetButtonDown("Reload") && Input.GetButtonDown("Fire1") && BulletLeft != magazineSize)
         {
             audioSource.PlayOneShot(ReloadClip);
-            bulletLeft = magazineSize;
+            BulletLeft = magazineSize;
         }
     }
 
@@ -37,13 +76,14 @@ public class ShootMecanics : MonoBehaviour {
     {
         delayBeforeNextFire -= Time.deltaTime;
 
-        if (Input.GetAxis("Fire1") != 0)
+        if (Input.GetButtonDown("Fire1"))
         {
             if (delayBeforeNextFire <= 0)
             {
                 ShootBullet();
+                BulletShot.Invoke();
                 audioSource.PlayOneShot(CurrentGunShotSound);
-                bulletLeft -= 1;
+                BulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
             }
         }
@@ -74,15 +114,5 @@ public class ShootMecanics : MonoBehaviour {
                 damage.TakeDamage(gunDamage);
             }
         }
-    }
-
-    public int GetAmmoLeft()
-    {
-        return bulletLeft;
-    }
-
-    public int GetMagazineSize()
-    {
-        return magazineSize;
     }
 }

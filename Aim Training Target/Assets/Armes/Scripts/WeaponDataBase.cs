@@ -17,4 +17,9 @@ public class WeaponDataBase : MonoBehaviour {
 
         return arme;
     }
+
+    public Weapon GetCurrentWeapon()
+    {
+        return Item[currentWeaponId];
+    }
 }

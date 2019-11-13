@@ -1,37 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SwitchingWeapon : MonoBehaviour {
 
     private WeaponDataBase controller;
-	AudioSource audioSource;
-	public AudioClip sound;
-	
-    void Start () {
-        controller = FindObjectOfType<WeaponDataBase>();
-        InstantiateWeapon(0);
-		audioSource = GetComponent<AudioSource>();
+    AudioSource audioSource;
+    public AudioClip sound;
+
+    bool weaponInHand = false;
+
+    public bool WeaponInHand {
+        get { return weaponInHand; }
+        set { weaponInHand = value; }
     }
 
-    void Update () {
-        if (Input.GetAxis("Weapon1") == 1)
+    public UnityEvent WeaponHaveSwitched;
+
+    void Start()
+    {
+        controller = GetComponentInChildren<WeaponDataBase>();
+        InstantiateWeapon(0);
+        audioSource = GetComponent<AudioSource>();
+
+        if (WeaponHaveSwitched == null)
         {
-            if (controller.currentWeaponId != 0)
-            {
-                DestroyCurrentHolding();
-                InstantiateWeapon(0);
-				audioSource.PlayOneShot(sound);
-            }
+            WeaponHaveSwitched = new UnityEvent();
         }
-        else if (Input.GetAxis("Weapon2") == 1)
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Weapon1"))
         {
-            if (controller.currentWeaponId != 1)
-            {
-                DestroyCurrentHolding();
-                InstantiateWeapon(1);
-				audioSource.PlayOneShot(sound);				
-            }
+            ProcessGunChanging(0);
+        }
+        else if (Input.GetButtonDown("Weapon2"))
+        {
+            ProcessGunChanging(1);
+        }
+    }
+
+    void ProcessGunChanging(int gunId)
+    {
+        if (controller.currentWeaponId != gunId)
+        {
+            DestroyCurrentHolding();
+            InstantiateWeapon(gunId);
+            audioSource.PlayOneShot(sound);
         }
     }
 
@@ -39,14 +56,16 @@ public class SwitchingWeapon : MonoBehaviour {
     {
         GameObject arme = controller.RecupererArmePrefab(idArme);
         Instantiate(arme, transform);
+
+        WeaponInHand = true;
         controller.currentWeaponId = idArme;
+        WeaponHaveSwitched.Invoke();
     }
 
     void DestroyCurrentHolding()
     {
-       GameObject currentHoldingWeapon = GameObject.FindWithTag("Weapon");
-       Destroy(currentHoldingWeapon);
+        GameObject currentHoldingWeapon = GetComponentInChildren<ShootMecanics>().gameObject;
+        WeaponInHand = false;
+        Destroy(currentHoldingWeapon);
     }
-
-
-    }
+}
