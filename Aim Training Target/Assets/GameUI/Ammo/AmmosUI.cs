@@ -12,6 +12,8 @@ public class AmmosUI : MonoBehaviour {
     WeaponDataBase weaponDataBase;
     ShootMecanics shootMecanics;
 
+    Weapon currentWeapon = null;
+
     int magSize = 0;
 
     void Start()
@@ -23,20 +25,20 @@ public class AmmosUI : MonoBehaviour {
         {
             weaponDataBase = gunSlot.GetComponentInChildren<WeaponDataBase>();
         }
+
+        shootMecanics = gunSlot.GetComponentInChildren<ShootMecanics>();
+        shootMecanics.BulletShot.AddListener(BulletShot);
+        shootMecanics.ReloadGun.AddListener(ReloadGun);
     }
 
     void WeaponSwitching()
     {
         if (gunSlot.WeaponInHand)
         {
-            Weapon currentWeapon = weaponDataBase.GetCurrentWeapon();
-            magazineSize.text = currentWeapon.magazineSize.ToString();
+            currentWeapon = weaponDataBase.GetCurrentWeapon();
 
             magSize = currentWeapon.magazineSize;
-
-            shootMecanics = gunSlot.GetComponentInChildren<ShootMecanics>();
-            shootMecanics.BulletShot.AddListener(BulletShot);
-            shootMecanics.ReloadGun.AddListener(ReloadGun);
+            magazineSize.text = magSize.ToString();
 
             ProcessAmmoLeft();
         }
@@ -44,13 +46,13 @@ public class AmmosUI : MonoBehaviour {
 
     void ProcessAmmoLeft()
     {
-        ammoLeftText.text = shootMecanics.GetBulletLeft().ToString();
+        ammoLeftText.text = currentWeapon.bulletLeft.ToString();
 
-        if (shootMecanics.GetBulletLeft() > 0 && shootMecanics.GetBulletLeft() <= CalculateLowAmmoNumber())
+        if (currentWeapon.bulletLeft > 0 && currentWeapon.bulletLeft <= CalculateLowAmmoNumber())
         {
             ammoLeftText.color = new Color32(255, 80, 80, 255);
         }
-        else if (shootMecanics.GetBulletLeft() == 0)
+        else if (currentWeapon.bulletLeft == 0)
         {
             ammoLeftText.color = new Color32(255, 10, 10, 255);
         }
