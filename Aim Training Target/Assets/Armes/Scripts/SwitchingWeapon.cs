@@ -10,6 +10,7 @@ public class SwitchingWeapon : MonoBehaviour {
     public AudioClip sound;
 
     bool weaponInHand = false;
+    bool weaponIsSwitching = false;
 
     public bool WeaponInHand {
         get { return weaponInHand; }
@@ -21,25 +22,37 @@ public class SwitchingWeapon : MonoBehaviour {
     void Start()
     {
         controller = GetComponentInChildren<WeaponDataBase>();
-        InstantiateWeapon(0);
         audioSource = GetComponent<AudioSource>();
 
         if (WeaponHaveSwitched == null)
         {
             WeaponHaveSwitched = new UnityEvent();
         }
+
+        InstantiateWeapon(0);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Weapon1"))
+        if (!weaponIsSwitching && Input.GetAxis("Fire1") == 0 && Input.GetAxis("Aim") == 0)
         {
-            ProcessGunChanging(0);
+            if (Input.GetButtonDown("Weapon1"))
+            {
+                StartCoroutine(weaponSwitchingTime(0.5f, 0));
+            }
+            else if (Input.GetButtonDown("Weapon2"))
+            {
+                StartCoroutine(weaponSwitchingTime(0.5f, 1));
+            }
         }
-        else if (Input.GetButtonDown("Weapon2"))
-        {
-            ProcessGunChanging(1);
-        }
+    }
+
+    IEnumerator weaponSwitchingTime(float _time, int _id)
+    {
+        weaponIsSwitching = true;
+        yield return new WaitForSeconds(_time);
+        ProcessGunChanging(_id);
+        weaponIsSwitching = false;
     }
 
     void ProcessGunChanging(int gunId)

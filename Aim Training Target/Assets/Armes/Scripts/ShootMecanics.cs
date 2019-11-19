@@ -10,8 +10,10 @@ public class ShootMecanics : MonoBehaviour {
     float weaponRange;
     int gunDamage;
     int bulletLeft;
+    float reloadTime;
 
     float delayBeforeNextFire = 0;
+    bool reloading = false;
 
     SwitchingWeapon gunSlot;
     WeaponDataBase weaponDataBase;
@@ -49,6 +51,7 @@ public class ShootMecanics : MonoBehaviour {
 
     void WeaponSwitching()
     {
+        print("GunSwitching");
         if (gunSlot.WeaponInHand)
         {
             currentWeapon = weaponDataBase.GetCurrentWeapon();
@@ -59,22 +62,20 @@ public class ShootMecanics : MonoBehaviour {
             gunDamage = currentWeapon.gunDamage;
             bulletLeft = currentWeapon.bulletLeft;
             CurrentGunShotSound = currentWeapon.gunAudio;
+            reloadTime = currentWeapon.reloadTime;
         }
     }
 
     void Update()
     {
-        if (bulletLeft > 0)
+        if (bulletLeft > 0 && !reloading)
         {
             ProcessFire();
         }
 
         if (Input.GetButtonDown("Reload") && Input.GetAxis("Fire1") == 0 && bulletLeft != magazineSize)
         {
-            audioSource.PlayOneShot(ReloadClip);
-            bulletLeft = magazineSize;
-            currentWeapon.bulletLeft = magazineSize;
-            ReloadGun.Invoke();
+            StartCoroutine(GunReloadTime(reloadTime));
         }
     }
 
@@ -110,6 +111,17 @@ public class ShootMecanics : MonoBehaviour {
         }
     }
 
+    IEnumerator GunReloadTime(float _time)
+    {
+        audioSource.PlayOneShot(ReloadClip);
+        reloading = true;
+        yield return new WaitForSeconds(_time);
+        bulletLeft = magazineSize;
+        currentWeapon.bulletLeft = magazineSize;
+        reloading = false;
+        ReloadGun.Invoke();
+    }
+
     private void TakeDamage(GameObject _gameObject)
     {
         if (_gameObject.GetComponent<Damage>() != null)
@@ -121,10 +133,5 @@ public class ShootMecanics : MonoBehaviour {
                 damage.TakeDamage(gunDamage);
             }
         }
-    }
-
-    public int GetBulletLeft()
-    {
-        return bulletLeft;
     }
 }

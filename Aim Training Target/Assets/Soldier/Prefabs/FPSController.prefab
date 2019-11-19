@@ -2841,6 +2841,7 @@ MonoBehaviour:
     gunDamage: 1
     bulletLeft: 20
     gunAudio: {fileID: 8300000, guid: c669e6dc372ff254fb343126ebbeb5f3, type: 3}
+    reloadTime: 1
   - id: 1
     name: AK47
     weaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
@@ -2851,6 +2852,7 @@ MonoBehaviour:
     gunDamage: 1
     bulletLeft: 30
     gunAudio: {fileID: 8300000, guid: 104a907747eeb6143859e889c395b2f0, type: 3}
+    reloadTime: 1
   currentWeaponId: 0
 --- !u!124 &124188475839639688
 Behaviour:

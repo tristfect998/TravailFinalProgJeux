@@ -14,5 +14,6 @@ public class Weapon {
     public int gunDamage;
     public int bulletLeft;
     public AudioClip gunAudio;
+    public float reloadTime;
 
 }
