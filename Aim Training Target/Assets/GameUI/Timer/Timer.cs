@@ -68,4 +68,9 @@ public class Timer : MonoBehaviour
         gameEnded = true;
         TimerText.enabled = false;
     }
+
+    public float GetTimerTime()
+    {
+        return TimerTime;
+    }
 }
