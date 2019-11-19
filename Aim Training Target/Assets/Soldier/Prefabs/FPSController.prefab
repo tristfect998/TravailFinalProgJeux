@@ -2727,6 +2727,7 @@ MonoBehaviour:
   AimingGunSlot: {fileID: 1601917927512360}
   HipFireGunSlot: {fileID: 1453269240390798}
   Crosshair: {fileID: 0}
+  timeToAim: 0.7
 --- !u!114 &114723671977598876
 MonoBehaviour:
   m_ObjectHideFlags: 1

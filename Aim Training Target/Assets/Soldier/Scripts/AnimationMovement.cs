@@ -27,6 +27,12 @@ namespace AimTrainingTarget.Soldier
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
 
+        public float timeToAim = 1f;
+
+        private float aimingProgression = 0;
+        private float calculatedTime = 0;
+        private GameObject currentAimLocation;
+
         void Start()
         {
             anim = GetComponent<Animator>();
@@ -114,12 +120,12 @@ namespace AimTrainingTarget.Soldier
             if (Input.GetAxisRaw("Aim") != 0)
             {
                 vAiming = true;
-                MoveGunToAim();
+                ProgressAiming();
             }
             else
             {
                 vAiming = false;
-                MoveGunToAim();
+                ProgressAiming();
             }
             #endregion
 
@@ -271,26 +277,31 @@ namespace AimTrainingTarget.Soldier
             #endregion
         }
 
-        void MoveGunToAim()
+        private void ProgressAiming()
         {
-            if (vAiming == true)
+            if (vAiming)
             {
-                if (!gunPositionChanged)
-                {
-                    audioSrc.PlayOneShot(movementClip);
-                    gunPositionChanged = true;
-                    GunSlot.transform.localPosition = AimingGunSlot.transform.localPosition;
-                    GunSlot.transform.localRotation = AimingGunSlot.transform.localRotation;
-                    Crosshair.SetActive(false);
-                }
+                calculatedTime += Time.deltaTime;
+                calculatedTime = Mathf.Min(calculatedTime, timeToAim);
+                aimingProgression = calculatedTime / timeToAim;
+                currentAimLocation = AimingGunSlot;
+                Crosshair.SetActive(false);
             }
             else
             {
-                gunPositionChanged = false;
-                GunSlot.transform.localPosition = HipFireGunSlot.transform.localPosition;
-                GunSlot.transform.localRotation = HipFireGunSlot.transform.localRotation;
+                calculatedTime -= Time.deltaTime;
+                calculatedTime = Mathf.Max(calculatedTime, 0);
+                aimingProgression = calculatedTime / timeToAim;
+                currentAimLocation = HipFireGunSlot;
                 Crosshair.SetActive(true);
             }
+            AjustAimingPosition();
+        }
+
+        private void AjustAimingPosition()
+        {
+            GunSlot.transform.localPosition = Vector3.Lerp(GunSlot.transform.localPosition, currentAimLocation.transform.localPosition, aimingProgression);
+            GunSlot.transform.localRotation = Quaternion.Lerp(GunSlot.transform.localRotation, currentAimLocation.transform.localRotation, aimingProgression);
         }
     }
 }
