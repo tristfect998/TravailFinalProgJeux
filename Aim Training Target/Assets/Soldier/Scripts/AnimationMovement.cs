@@ -19,6 +19,7 @@ namespace AimTrainingTarget.Soldier
         bool gunPositionChanged = false;
         bool isPause;
         AudioSource audioSrc;
+        ImageManager imageManager;
         public AudioClip movementClip;
         public GameObject rightHandObj;
         public GameObject leftHandObj;
@@ -26,12 +27,14 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
+        
 
         void Start()
         {
             anim = GetComponent<Animator>();
             audioSrc = GetComponent<AudioSource>();
             isPause = false;
+            imageManager = FindObjectOfType<ImageManager>();
         }
 
         void OnAnimatorIK(int layerIndex)
@@ -62,12 +65,14 @@ namespace AimTrainingTarget.Soldier
                     audioSrc.PlayOneShot(movementClip);
                     if (!anim.GetBool("isCrouch"))
                     {
+                        imageManager.DisplayPositionImage(ImageManager.Position.CROUCHING);
                         anim.SetBool("isCrouch", true);
                         anim.SetBool("isStanding", false);
                         anim.SetBool("isProne", false);
                     }
                     else
                     {
+                        imageManager.DisplayPositionImage(ImageManager.Position.STANDING);
                         anim.SetBool("isCrouch", false);
                         anim.SetBool("isStanding", true);
 
@@ -90,12 +95,14 @@ namespace AimTrainingTarget.Soldier
                     audioSrc.PlayOneShot(movementClip);
                     if (!anim.GetBool("isProne"))
                     {
+                        imageManager.DisplayPositionImage(ImageManager.Position.PRONING);
                         anim.SetBool("isCrouch", false);
                         anim.SetBool("isStanding", false);
                         anim.SetBool("isProne", true);
                     }
                     else
                     {
+                        imageManager.DisplayPositionImage(ImageManager.Position.CROUCHING);
                         anim.SetBool("isCrouch", true);
                         anim.SetBool("isProne", false);
 
@@ -215,9 +222,30 @@ namespace AimTrainingTarget.Soldier
 
             if (vRunning == true)
             {
-                anim.SetBool("isRunning", true);
-                anim.SetBool("isCrouch", false);
-                anim.SetBool("isStanding", true);
+                if(anim.GetBool("isCrouch"))
+                {
+                    //imageManager.DisplayPositionImage(ImageManager.Position.CROUCHING);
+                    anim.SetBool("isRunning", true);
+                    anim.SetBool("isCrouch", true);
+                    anim.SetBool("isStanding", false);
+                    anim.SetBool("isProne", false);
+                }
+                else if(anim.GetBool("isStanding"))
+                {
+                    imageManager.DisplayPositionImage(ImageManager.Position.STANDING);
+                    anim.SetBool("isRunning", true);
+                    anim.SetBool("isStanding", true);
+                    anim.SetBool("isCrouch", false);
+                    anim.SetBool("isProne", false);
+                }
+                else
+                {
+                    imageManager.DisplayPositionImage(ImageManager.Position.PRONING);
+                    anim.SetBool("isRunning", true);
+                    anim.SetBool("isStanding", false);
+                    anim.SetBool("isCrouch", false);
+                    anim.SetBool("isProne", true);
+                }
             }
             else
             {
@@ -236,6 +264,7 @@ namespace AimTrainingTarget.Soldier
                     }
                     else
                     {
+                        imageManager.DisplayPositionImage(ImageManager.Position.STANDING);
                         anim.SetBool("isCrouch", false);
                         anim.SetBool("isProne", false);
                         anim.SetBool("isStanding", true);
