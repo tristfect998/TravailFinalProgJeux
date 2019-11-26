@@ -24,6 +24,8 @@ public class ShootMecanics : MonoBehaviour {
     AudioClip CurrentGunShotSound;
     public AudioClip ReloadClip;
 
+    public GameObject gunImpact;
+
     public UnityEvent BulletShot;
     public UnityEvent ReloadGun;
 
@@ -111,6 +113,8 @@ public class ShootMecanics : MonoBehaviour {
             {
                 TakeDamage(hit.transform.gameObject);
             }
+
+            Instantiate(gunImpact, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
         }
     }
 

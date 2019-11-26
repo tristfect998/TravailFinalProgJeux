@@ -2682,6 +2682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReloadClip: {fileID: 8300000, guid: 37ee2162b1e2eca489e626ad1bba9808, type: 3}
+  gunImpact: {fileID: 1260940340792156, guid: f0ca69c9755bf624b835e7d5ebd1ed09, type: 2}
   BulletShot:
     m_PersistentCalls:
       m_Calls: []
@@ -2704,6 +2705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: a6f4275427bbfad46856c68d5d6e3600, type: 3}
+  AimGunSlot: {fileID: 0}
+  AimingDifference: {x: 0, y: 0, z: 0}
   WeaponHaveSwitched:
     m_PersistentCalls:
       m_Calls: []
