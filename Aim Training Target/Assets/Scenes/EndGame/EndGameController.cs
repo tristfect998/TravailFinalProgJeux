@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 
 public class EndGameController : MonoBehaviour {
+    public static EndGameController EndGameControl;
 
     List<gameDataHighScore> DataHighScore;
     float bestTimeToFinish;
@@ -20,6 +21,27 @@ public class EndGameController : MonoBehaviour {
 
     void Start()
     {
+
+        if (EndGameControl == null)
+
+        {
+
+            
+
+            EndGameControl = this;
+
+
+
+        }
+
+        else
+
+        {
+
+            Destroy(gameObject);
+
+        }
+
         audioSrc = GetComponent<AudioSource>();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -120,7 +142,7 @@ public class EndGameController : MonoBehaviour {
 
     public void isScoreBeat()
     {
-
+       
         if (newTimeToFinish < bestTimeToFinish)
         {
             audioSrc.PlayOneShot(WinSound);
@@ -163,6 +185,11 @@ public class EndGameController : MonoBehaviour {
     public void BackToMenu()
     {
         SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+    }
+
+    public int getmapindex()
+    {
+        return 1;
     }
 
 }
