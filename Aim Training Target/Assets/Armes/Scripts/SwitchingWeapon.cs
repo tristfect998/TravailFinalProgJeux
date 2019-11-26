@@ -86,11 +86,19 @@ public class SwitchingWeapon : MonoBehaviour {
             {
                 case 0: /*M4*/
                     if(AimGunSlotPositionChanged)
+                    {
                         AimGunSlot.transform.localPosition -= AimingDifference;
+                    }
                     break;
                 case 1: /*AK*/
                     AimGunSlot.transform.localPosition += AimingDifference;
                     AimGunSlotPositionChanged = true;
+                    break;
+                default:
+                    if (AimGunSlotPositionChanged)
+                    {
+                        AimGunSlot.transform.localPosition -= AimingDifference;
+                    }
                     break;
             }
         }

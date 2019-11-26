@@ -2704,6 +2704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: a6f4275427bbfad46856c68d5d6e3600, type: 3}
+  AimGunSlot: {fileID: 1601917927512360}
+  AimingDifference: {x: 0, y: 0.07, z: -0.1}
   WeaponHaveSwitched:
     m_PersistentCalls:
       m_Calls: []

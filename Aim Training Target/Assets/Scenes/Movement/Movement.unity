@@ -714,6 +714,21 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114473928526607050, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: HandsOffsetWhileAiming.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114239873694634658, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: AimingDifference.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114239873694634658, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: AKRotationDifference.x
+      value: -8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabAsset: 0

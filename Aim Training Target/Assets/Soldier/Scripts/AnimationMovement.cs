@@ -27,7 +27,6 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
-        
 
         public float timeToAim = 1f;
 
