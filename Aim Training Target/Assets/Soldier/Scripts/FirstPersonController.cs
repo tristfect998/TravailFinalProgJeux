@@ -40,6 +40,7 @@ namespace AimTrainingTarget.Soldier
         private AudioSource m_AudioSource;
         private float normaly;
         private float normalz;
+        private Animator anim;
 
         // Use this for initialization
         private void Start()
@@ -53,6 +54,7 @@ namespace AimTrainingTarget.Soldier
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            anim = GetComponent<Animator>();
         }
 
 
@@ -227,6 +229,12 @@ namespace AimTrainingTarget.Soldier
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
 
             if (vertical <= 0)
+                speed = m_WalkSpeed;
+
+            if (anim.GetBool("isCrouch"))
+                speed = m_WalkSpeed;
+
+            if (anim.GetBool("isProne"))
                 speed = m_WalkSpeed;
 
             m_Input = new Vector2(horizontal, vertical);
