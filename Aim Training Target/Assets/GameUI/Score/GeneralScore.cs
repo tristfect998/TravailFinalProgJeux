@@ -9,9 +9,12 @@ using System.IO;
 public class GeneralScore : MonoBehaviour {
     Timer timeTimer;
     static int currentScore = 0;
+    int scoreToGet;
 
     void Start()
     {
+        scoreToGet = FindObjectsOfType<Target>().Length;
+        currentScore = 0;
         timeTimer = FindObjectOfType<Timer>();
     }
 
@@ -24,10 +27,12 @@ public class GeneralScore : MonoBehaviour {
 
     public void AddScore()
     {
-        currentScore += 11;
+        currentScore += 1;
 
-        if (currentScore == 11)
+
+        if (currentScore >= scoreToGet)
         {
+            
             showEndGame();
         }
     }
