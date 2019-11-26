@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4292177398169646}
   - component: {fileID: 198424743505972428}
+  - component: {fileID: 114423528642092312}
   - component: {fileID: 199680914314398604}
   m_Layer: 0
   m_Name: Fire
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &114423528642092312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1674543821378346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe0b000f5668084193955fec3cf795a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 1
 --- !u!198 &198424743505972428
 ParticleSystem:
   m_ObjectHideFlags: 1

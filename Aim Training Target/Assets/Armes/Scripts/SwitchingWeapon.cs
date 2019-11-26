@@ -79,7 +79,7 @@ public class SwitchingWeapon : MonoBehaviour {
         WeaponInHand = true;
         controller.currentWeaponId = idArme;
         WeaponHaveSwitched.Invoke();
-        print(idArme);
+
         if(AimGunSlot != null)
         {
             switch(idArme)

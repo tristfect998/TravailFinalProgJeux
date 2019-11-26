@@ -26,6 +26,9 @@ public class ShootMecanics : MonoBehaviour {
 
     public GameObject gunImpact;
 
+    public GameObject fireMuzzleFlash;
+    public GameObject smokeMuzzleFlash;
+
     public UnityEvent BulletShot;
     public UnityEvent ReloadGun;
 
@@ -68,6 +71,8 @@ public class ShootMecanics : MonoBehaviour {
             bulletLeft = currentWeapon.bulletLeft;
             CurrentGunShotSound = currentWeapon.gunAudio;
             reloadTime = currentWeapon.reloadTime;
+
+            
         }
     }
 
@@ -98,6 +103,7 @@ public class ShootMecanics : MonoBehaviour {
                 currentWeapon.bulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
                 BulletShot.Invoke();
+                CreateMuzzleFlash();
             }
         }
     }
@@ -140,5 +146,11 @@ public class ShootMecanics : MonoBehaviour {
                 damage.TakeDamage(gunDamage);
             }
         }
+    }
+
+    private void CreateMuzzleFlash()
+    {
+        Instantiate(fireMuzzleFlash, gunSlot.transform);
+        Instantiate(smokeMuzzleFlash, gunSlot.transform);
     }
 }

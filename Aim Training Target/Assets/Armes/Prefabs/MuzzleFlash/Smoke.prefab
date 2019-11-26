@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4855632367183012}
   - component: {fileID: 198984882992254060}
+  - component: {fileID: 114051949016522580}
   - component: {fileID: 199647515026070418}
   m_Layer: 0
   m_Name: Smoke
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &114051949016522580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460222902583870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe0b000f5668084193955fec3cf795a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 1
 --- !u!198 &198984882992254060
 ParticleSystem:
   m_ObjectHideFlags: 1
