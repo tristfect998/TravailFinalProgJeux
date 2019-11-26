@@ -86,9 +86,9 @@ Material:
     - _EnableRotation: 1
     - _Exposure: 0.5
     - _Float0: 0
-    - _FogFill: 0
-    - _FogHeight: 0
-    - _FogSmoothness: 0.01
+    - _FogFill: 0.139
+    - _FogHeight: 1
+    - _FogSmoothness: 0.431
     - _Fogg: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -99,8 +99,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Rotation: 0
-    - _RotationSpeed: 0.5
+    - _Rotation: 10
+    - _RotationSpeed: 0.6
     - _Rotationn: 1
     - _SkyboxExtended: 1
     - _SmoothnessTextureChannel: 0
