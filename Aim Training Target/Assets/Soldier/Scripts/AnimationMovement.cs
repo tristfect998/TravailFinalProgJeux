@@ -27,6 +27,8 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
+        public GameObject KeepPlayingButton;
+        public GameObject QuitButton;
 
         public float timeToAim = 1f;
 
@@ -291,14 +293,18 @@ namespace AimTrainingTarget.Soldier
             {
                 if (isPause)
                 {
-                    //Time.timeScale = 1;
-                    //EscapeMenu.SetActive(false);
+                    Time.timeScale = 1;
+                    Cursor.visible = true;
+                    KeepPlayingButton.SetActive(false);
+                    QuitButton.SetActive(false);
                     isPause = false;
                 }
                 else
                 {
-                    //Time.timeScale = 0;
-                    //EscapeMenu.SetActive(true);                    
+                    Time.timeScale = 0;
+                    Cursor.visible = true;
+                    KeepPlayingButton.SetActive(true);
+                    QuitButton.SetActive(true);
                     isPause = true;
                 }
             }
