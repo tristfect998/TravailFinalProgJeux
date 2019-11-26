@@ -279,6 +279,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &198791823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1601917927512360, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1597468475}
 --- !u!1 &558182538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1791244421200738, guid: ca383fc6244e13743ae880a10b278c85,
@@ -691,6 +696,24 @@ Prefab:
       propertyPath: Crosshair
       value: 
       objectReference: {fileID: 558182538}
+    - target: {fileID: 114239873694634658, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: AimGunSlot
+      value: 
+      objectReference: {fileID: 198791823}
+    - target: {fileID: 114239873694634658, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: AimingDifference.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691976821606618, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824627334934480, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabAsset: 0

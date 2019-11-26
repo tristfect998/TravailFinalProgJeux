@@ -8,7 +8,10 @@ public class SwitchingWeapon : MonoBehaviour {
     private WeaponDataBase controller;
     AudioSource audioSource;
     public AudioClip sound;
+    public GameObject AimGunSlot;
+    public Vector3 AimingDifference;
 
+    bool AimGunSlotPositionChanged = false;
     bool weaponInHand = false;
 
     public bool WeaponInHand {
@@ -56,10 +59,24 @@ public class SwitchingWeapon : MonoBehaviour {
     {
         GameObject arme = controller.RecupererArmePrefab(idArme);
         Instantiate(arme, transform);
-
         WeaponInHand = true;
         controller.currentWeaponId = idArme;
         WeaponHaveSwitched.Invoke();
+        print(idArme);
+        if(AimGunSlot != null)
+        {
+            switch(idArme)
+            {
+                case 0: /*M4*/
+                    if(AimGunSlotPositionChanged)
+                        AimGunSlot.transform.localPosition -= AimingDifference;
+                    break;
+                case 1: /*AK*/
+                    AimGunSlot.transform.localPosition += AimingDifference;
+                    AimGunSlotPositionChanged = true;
+                    break;
+            }
+        }
     }
 
     void DestroyCurrentHolding()
