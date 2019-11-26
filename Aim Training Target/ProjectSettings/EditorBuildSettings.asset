@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ColorPicker/ColorPicker.unity
     guid: 5ee75577703494c45b83c165be57dc27
+  - enabled: 1
+    path: Assets/Scenes/EndGame/EndGame.unity
+    guid: 4968c241e81abfe4ca23d1ba3d298161
   m_configObjects: {}
