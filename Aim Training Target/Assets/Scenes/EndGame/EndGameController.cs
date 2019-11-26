@@ -15,9 +15,12 @@ public class EndGameController : MonoBehaviour {
     float newTimeToFinish;
     Timer timer;
     bool hasAHighScore;
+    AudioSource audioSrc;
+    public AudioClip WinSound;
 
     void Start()
     {
+        audioSrc = GetComponent<AudioSource>();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         LoadDernierScore();
@@ -99,7 +102,6 @@ public class EndGameController : MonoBehaviour {
         FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRec.dat", FileMode.Create);
         try
         {
-            print("123");
             BinaryFormatter bf = new BinaryFormatter();
             scoreData scoreDataToSave = new scoreData();
             DataHighScore.Where(s => s.mapIndex == mapIndex).FirstOrDefault().bestTimeToFinish = newTimeToFinish;
@@ -121,6 +123,7 @@ public class EndGameController : MonoBehaviour {
 
         if (newTimeToFinish < bestTimeToFinish)
         {
+            audioSrc.PlayOneShot(WinSound);
             SaveHasHighScore();
         }
     }
