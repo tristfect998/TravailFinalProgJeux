@@ -27,17 +27,21 @@ public class ShootMecanics : MonoBehaviour {
     public UnityEvent BulletShot;
     public UnityEvent ReloadGun;
 
-    void Start()
+    void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-
         gunSlot = FindObjectOfType<SwitchingWeapon>();
+
         gunSlot.WeaponHaveSwitched.AddListener(WeaponSwitching);
 
         if (gunSlot != null)
         {
             weaponDataBase = gunSlot.GetComponentInChildren<WeaponDataBase>();
         }
+    }
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
 
         if (BulletShot == null)
         {
@@ -51,7 +55,6 @@ public class ShootMecanics : MonoBehaviour {
 
     void WeaponSwitching()
     {
-        print("GunSwitching");
         if (gunSlot.WeaponInHand)
         {
             currentWeapon = weaponDataBase.GetCurrentWeapon();

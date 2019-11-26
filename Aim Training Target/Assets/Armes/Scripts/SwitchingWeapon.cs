@@ -59,9 +59,13 @@ public class SwitchingWeapon : MonoBehaviour {
     {
         if (controller.currentWeaponId != gunId)
         {
-            DestroyCurrentHolding();
-            InstantiateWeapon(gunId);
+            if (WeaponInHand)
+            {
+                DestroyCurrentHolding();
+            }
+
             audioSource.PlayOneShot(sound);
+            InstantiateWeapon(gunId);
         }
     }
 
