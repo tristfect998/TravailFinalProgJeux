@@ -15,5 +15,6 @@ public class Weapon {
     public int bulletLeft;
     public AudioClip gunAudio;
     public float reloadTime;
+    public Vector3 muzzleFlashOffset;
 
 }

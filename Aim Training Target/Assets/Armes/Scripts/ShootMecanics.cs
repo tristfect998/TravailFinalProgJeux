@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ShootMecanics : MonoBehaviour {
+public class ShootMecanics : MonoBehaviour
+{
 
     int magazineSize;
     float fireDelay;
@@ -23,6 +24,12 @@ public class ShootMecanics : MonoBehaviour {
     private AudioSource audioSource;
     AudioClip CurrentGunShotSound;
     public AudioClip ReloadClip;
+
+    public GameObject gunImpact;
+
+    public GameObject fireMuzzleFlash;
+    public GameObject smokeMuzzleFlash;
+    Vector3 muzzleFlashPosition = new Vector3();
 
     public UnityEvent BulletShot;
     public UnityEvent ReloadGun;
@@ -66,6 +73,8 @@ public class ShootMecanics : MonoBehaviour {
             bulletLeft = currentWeapon.bulletLeft;
             CurrentGunShotSound = currentWeapon.gunAudio;
             reloadTime = currentWeapon.reloadTime;
+            muzzleFlashPosition = currentWeapon.muzzleFlashOffset;
+
         }
     }
 
@@ -96,6 +105,7 @@ public class ShootMecanics : MonoBehaviour {
                 currentWeapon.bulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
                 BulletShot.Invoke();
+                CreateMuzzleFlash();
             }
         }
     }
@@ -111,6 +121,8 @@ public class ShootMecanics : MonoBehaviour {
             {
                 TakeDamage(hit.transform.gameObject);
             }
+
+            Instantiate(gunImpact, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
         }
     }
 
@@ -135,6 +147,18 @@ public class ShootMecanics : MonoBehaviour {
             {
                 damage.TakeDamage(gunDamage);
             }
+        }
+    }
+
+    private void CreateMuzzleFlash()
+    {
+        if (gunSlot.WeaponInHand)
+        {
+            GameObject fire = Instantiate(fireMuzzleFlash, gunSlot.gameObject.transform);
+            GameObject smoke = Instantiate(smokeMuzzleFlash, gunSlot.gameObject.transform);
+
+            fire.transform.localPosition += muzzleFlashPosition;
+            smoke.transform.localPosition += muzzleFlashPosition;
         }
     }
 }
