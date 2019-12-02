@@ -6,6 +6,7 @@ public class Target : MonoBehaviour, Damage {
 
     public GameObject explosion;
     public int lifeTotal = 1;
+    public GameObject explosionlocation;
     GeneralScore generalScore;
 
     private bool isDestroy = false;
@@ -29,7 +30,8 @@ public class Target : MonoBehaviour, Damage {
     {
         if (!isDestroy)
         {
-            Instantiate(explosion, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z), Quaternion.identity);
+            print(gameObject.transform.localScale);
+            Instantiate(explosion, new Vector3(explosionlocation.transform.position.x, explosionlocation.transform.position.y , explosionlocation.transform.position.z), Quaternion.identity);
             Destroy(gameObject);
             isDestroy = true;
             generalScore.AddScore();
