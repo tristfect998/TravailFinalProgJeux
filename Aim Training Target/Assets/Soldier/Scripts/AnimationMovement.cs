@@ -16,7 +16,7 @@ namespace AimTrainingTarget.Soldier
         bool vWalkingBack = false;
         bool vRunning = false;
         bool vJumped = false;
-        bool gunPositionChanged = false;
+        //bool gunPositionChanged = false;
         bool isPause;
         AudioSource audioSrc;
         ImageManager imageManager;
@@ -288,7 +288,7 @@ namespace AimTrainingTarget.Soldier
             }
             #endregion
 
-            #region Escape
+            /*#region Escape
             if (Input.GetKeyDown("escape"))
             {
                 if (isPause)
@@ -308,7 +308,7 @@ namespace AimTrainingTarget.Soldier
                     isPause = true;
                 }
             }
-            #endregion
+            #endregion*/
         }
 
         private void ProgressAiming()
