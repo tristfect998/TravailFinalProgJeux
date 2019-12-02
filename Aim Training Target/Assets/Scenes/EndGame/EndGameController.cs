@@ -80,24 +80,29 @@ public class EndGameController : MonoBehaviour {
 
     public void LoadMeilleurScore()
     {
+       
         BinaryFormatter bf = new BinaryFormatter();
-        if (!File.Exists(Application.persistentDataPath + "gameInfoHighRec.dat"))
+        if (!File.Exists(Application.persistentDataPath + "gameInfoHighRecs.dat"))
         {
             throw new Exception("Game file doesnt exist");
         }
-        FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRec.dat", FileMode.Open);
+        FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRecs.dat", FileMode.Open);
         scoreData scoreDataToLoad = (scoreData)bf.Deserialize(file);
         bestTimeToFinish = scoreDataToLoad.gameHighscore.Where(s => s.mapIndex == mapIndex).FirstOrDefault().bestTimeToFinish;
         DataHighScore = scoreDataToLoad.gameHighscore;
         file.Close();
+        print("aalo");
     }
   
     public void SaveFirstScore()
     {
-        FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRec.dat", FileMode.Create);
+        print(newTimeToFinish);
+        FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRecs.dat", FileMode.Create);
+        print(newTimeToFinish);
+
         try
         {
-           
+
             BinaryFormatter bf = new BinaryFormatter();       
             scoreData scoreDataToSave = new scoreData();
             scoreDataToSave.gameHighscore =  DataHighScore;
@@ -116,7 +121,7 @@ public class EndGameController : MonoBehaviour {
 
     public void SaveHasHighScore()
     {
-        FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRec.dat", FileMode.Create);
+        FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRecs.dat", FileMode.Create);
         try
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -137,8 +142,8 @@ public class EndGameController : MonoBehaviour {
 
     public void isScoreBeat()
     {
-        print(newTimeToFinish);
-        print(bestTimeToFinish);
+
+
 
         if (newTimeToFinish < bestTimeToFinish)
         {
@@ -186,7 +191,7 @@ public class EndGameController : MonoBehaviour {
 
     public int getmapindex()
     {
-        return 1;
+        return mapIndex;
     }
 
 }

@@ -13,6 +13,7 @@ public class EndGameButton : MonoBehaviour {
 
     public void Restartmap()
     {
+        print(EndGameController.EndGameControl.getmapindex());
         SceneManager.LoadSceneAsync(EndGameController.EndGameControl.getmapindex(), LoadSceneMode.Single);
     }
 
