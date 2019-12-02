@@ -11,6 +11,7 @@ public class SwitchingWeapon : MonoBehaviour {
     public GameObject AimGunSlot;
     public Vector3 AimingDifference;
 
+    ArmesUIScript armesUI;
     bool AimGunSlotPositionChanged = false;
     bool weaponInHand = false;
     bool weaponIsSwitching = false;
@@ -24,6 +25,7 @@ public class SwitchingWeapon : MonoBehaviour {
 
     void Start()
     {
+        armesUI = FindObjectOfType<ArmesUIScript>();
         controller = GetComponentInChildren<WeaponDataBase>();
         audioSource = GetComponent<AudioSource>();
 
@@ -79,18 +81,27 @@ public class SwitchingWeapon : MonoBehaviour {
         WeaponInHand = true;
         controller.currentWeaponId = idArme;
         WeaponHaveSwitched.Invoke();
-
         if(AimGunSlot != null)
         {
             switch(idArme)
             {
                 case 0: /*M4*/
                     if(AimGunSlotPositionChanged)
+                    {
                         AimGunSlot.transform.localPosition -= AimingDifference;
+                    }
+                    armesUI.DisplayNewGunImage(ArmesUIScript.Gun.M4);
                     break;
                 case 1: /*AK*/
                     AimGunSlot.transform.localPosition += AimingDifference;
                     AimGunSlotPositionChanged = true;
+                    armesUI.DisplayNewGunImage(ArmesUIScript.Gun.AK);
+                    break;
+                default:
+                    if (AimGunSlotPositionChanged)
+                    {
+                        AimGunSlot.transform.localPosition -= AimingDifference;
+                    }
                     break;
             }
         }

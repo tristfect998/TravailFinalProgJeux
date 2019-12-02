@@ -16,7 +16,7 @@ namespace AimTrainingTarget.Soldier
         bool vWalkingBack = false;
         bool vRunning = false;
         bool vJumped = false;
-        bool gunPositionChanged = false;
+        //bool gunPositionChanged = false;
         bool isPause;
         AudioSource audioSrc;
         ImageManager imageManager;
@@ -27,7 +27,8 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
-        
+        public GameObject KeepPlayingButton;
+        public GameObject QuitButton;
 
         public float timeToAim = 1f;
 
@@ -287,23 +288,27 @@ namespace AimTrainingTarget.Soldier
             }
             #endregion
 
-            #region Escape
+            /*#region Escape
             if (Input.GetKeyDown("escape"))
             {
                 if (isPause)
                 {
-                    //Time.timeScale = 1;
-                    //EscapeMenu.SetActive(false);
+                    Time.timeScale = 1;
+                    Cursor.visible = true;
+                    KeepPlayingButton.SetActive(false);
+                    QuitButton.SetActive(false);
                     isPause = false;
                 }
                 else
                 {
-                    //Time.timeScale = 0;
-                    //EscapeMenu.SetActive(true);                    
+                    Time.timeScale = 0;
+                    Cursor.visible = true;
+                    KeepPlayingButton.SetActive(true);
+                    QuitButton.SetActive(true);
                     isPause = true;
                 }
             }
-            #endregion
+            #endregion*/
         }
 
         private void ProgressAiming()
