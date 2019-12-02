@@ -15,9 +15,9 @@ namespace AimTrainingTarget.Soldier
         public float smoothTime = 5f;
         public bool lockCursor = true;
         public bool isM4 = true;
-        float m4recoilforce = 4.5f;
-        float akrecoilforce = 6.5f;
-        float recoilForce = 5f;
+        float m4recoilforce = 2.5f;
+        float akrecoilforce = 3.5f;
+        float recoilForce = 2.5f;
 
 
         private bool Recoil = false;
