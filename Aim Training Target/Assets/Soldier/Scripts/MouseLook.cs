@@ -14,8 +14,13 @@ namespace AimTrainingTarget.Soldier
         public bool smooth;
         public float smoothTime = 5f;
         public bool lockCursor = true;
+        public bool isM4 = true;
+        float m4recoilforce = 4.5f;
+        float akrecoilforce = 6.5f;
+        float recoilForce = 5f;
 
 
+        private bool Recoil = false;
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
@@ -31,6 +36,12 @@ namespace AimTrainingTarget.Soldier
         {
             float yRot = Input.GetAxis("Mouse X") * XSensitivity;
             float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+            if (Recoil)
+            {
+                Console.WriteLine(recoilForce);
+                xRot += recoilForce;
+                Recoil = false;
+            }
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
@@ -110,5 +121,17 @@ namespace AimTrainingTarget.Soldier
             return q;
         }
 
+        public void AddRecoil()
+        {
+            Recoil = true;
+        }
+
+        public void ChangeRecoil(bool ism4)
+        {
+            if (isM4)
+                recoilForce = m4recoilforce;
+            else
+                recoilForce = akrecoilforce;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using AimTrainingTarget.Soldier;
 
 public class ShootMecanics : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class ShootMecanics : MonoBehaviour
     public UnityEvent BulletShot;
     public UnityEvent ReloadGun;
 
+    public FirstPersonController fpsc;
+
     void Awake()
     {
         gunSlot = FindObjectOfType<SwitchingWeapon>();
@@ -49,7 +52,7 @@ public class ShootMecanics : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
+        fpsc = GetComponentInParent<FirstPersonController>();
         if (BulletShot == null)
         {
             BulletShot = new UnityEvent();
@@ -105,6 +108,7 @@ public class ShootMecanics : MonoBehaviour
                 currentWeapon.bulletLeft -= 1;
                 delayBeforeNextFire = fireDelay;
                 BulletShot.Invoke();
+                fpsc.AddRecoil();
                 CreateMuzzleFlash();
             }
         }

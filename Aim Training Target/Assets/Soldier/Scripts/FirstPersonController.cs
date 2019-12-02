@@ -268,5 +268,15 @@ namespace AimTrainingTarget.Soldier
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
+        public void AddRecoil()
+        {
+            m_MouseLook.AddRecoil();
+        }
+
+        public void isM4(bool isM4)
+        {
+            m_MouseLook.ChangeRecoil(isM4);
+        }
     }
 }

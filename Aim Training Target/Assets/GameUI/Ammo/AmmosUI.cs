@@ -46,9 +46,9 @@ public class AmmosUI : MonoBehaviour {
 
     void ProcessAmmoLeft()
     {
-        ammoLeftText.text = currentWeapon.bulletLeft.ToString();
+        //ammoLeftText.text = currentWeapon.bulletLeft.ToString();
 
-        if (currentWeapon.bulletLeft > 0 && currentWeapon.bulletLeft <= CalculateLowAmmoNumber())
+        /*if (currentWeapon.bulletLeft > 0 && currentWeapon.bulletLeft <= CalculateLowAmmoNumber())
         {
             ammoLeftText.color = new Color32(255, 80, 80, 255);
         }
@@ -59,7 +59,7 @@ public class AmmosUI : MonoBehaviour {
         else
         {
             ammoLeftText.color = Color.white;
-        }
+        }*/
     }
 
     void BulletShot()

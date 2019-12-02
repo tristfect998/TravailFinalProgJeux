@@ -27,8 +27,7 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
-        public GameObject KeepPlayingButton;
-        public GameObject QuitButton;
+        
 
         public float timeToAim = 1f;
 
@@ -239,7 +238,7 @@ namespace AimTrainingTarget.Soldier
                 }
                 else if(anim.GetBool("isStanding"))
                 {
-
+                    imageManager.DisplayPositionImage(ImageManager.Position.STANDING);
                     anim.SetBool("isRunning", true);
                     anim.SetBool("isStanding", true);
                     anim.SetBool("isCrouch", false);
@@ -247,7 +246,7 @@ namespace AimTrainingTarget.Soldier
                 }
                 else
                 {
-             
+                    imageManager.DisplayPositionImage(ImageManager.Position.PRONING);
                     anim.SetBool("isRunning", true);
                     anim.SetBool("isStanding", false);
                     anim.SetBool("isCrouch", false);
