@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ShootMecanics : MonoBehaviour {
+public class ShootMecanics : MonoBehaviour
+{
 
     int magazineSize;
     float fireDelay;
@@ -28,6 +29,7 @@ public class ShootMecanics : MonoBehaviour {
 
     public GameObject fireMuzzleFlash;
     public GameObject smokeMuzzleFlash;
+    Vector3 muzzleFlashPosition = new Vector3();
 
     public UnityEvent BulletShot;
     public UnityEvent ReloadGun;
@@ -71,8 +73,8 @@ public class ShootMecanics : MonoBehaviour {
             bulletLeft = currentWeapon.bulletLeft;
             CurrentGunShotSound = currentWeapon.gunAudio;
             reloadTime = currentWeapon.reloadTime;
+            muzzleFlashPosition = currentWeapon.muzzleFlashOffset;
 
-            
         }
     }
 
@@ -150,7 +152,13 @@ public class ShootMecanics : MonoBehaviour {
 
     private void CreateMuzzleFlash()
     {
-        Instantiate(fireMuzzleFlash, gunSlot.transform);
-        Instantiate(smokeMuzzleFlash, gunSlot.transform);
+        if (gunSlot.WeaponInHand)
+        {
+            GameObject fire = Instantiate(fireMuzzleFlash, gunSlot.gameObject.transform);
+            GameObject smoke = Instantiate(smokeMuzzleFlash, gunSlot.gameObject.transform);
+
+            fire.transform.localPosition += muzzleFlashPosition;
+            smoke.transform.localPosition += muzzleFlashPosition;
+        }
     }
 }

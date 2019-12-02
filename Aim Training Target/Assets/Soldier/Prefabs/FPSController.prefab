@@ -2850,8 +2850,7 @@ MonoBehaviour:
     bulletLeft: 20
     gunAudio: {fileID: 8300000, guid: c669e6dc372ff254fb343126ebbeb5f3, type: 3}
     reloadTime: 1
-    muzzleFlash: {fileID: 1647121412690336, guid: 10dcadddd09dce24d9c947502e4a502b,
-      type: 2}
+    muzzleFlashOffset: {x: 0, y: 0.0719, z: -0.4165}
   - id: 1
     name: AK47
     weaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
@@ -2863,8 +2862,7 @@ MonoBehaviour:
     bulletLeft: 30
     gunAudio: {fileID: 8300000, guid: 104a907747eeb6143859e889c395b2f0, type: 3}
     reloadTime: 1
-    muzzleFlash: {fileID: 1177303682235762, guid: 20f91947b81923147a7f381c02c96972,
-      type: 2}
+    muzzleFlashOffset: {x: 0, y: 0, z: -0.679}
   currentWeaponId: 0
 --- !u!124 &124188475839639688
 Behaviour:
