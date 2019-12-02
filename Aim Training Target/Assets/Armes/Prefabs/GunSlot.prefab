@@ -276,6 +276,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: a6f4275427bbfad46856c68d5d6e3600, type: 3}
+  AimGunSlot: {fileID: 0}
+  AimingDifference: {x: 0, y: 0, z: 0}
+  fpsc: {fileID: 0}
+  WeaponHaveSwitched:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114985022473127120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +304,10 @@ MonoBehaviour:
     fireDelay: 0.1
     weaponRange: 30
     gunDamage: 1
+    bulletLeft: 0
+    gunAudio: {fileID: 0}
+    reloadTime: 0
+    muzzleFlashOffset: {x: 0, y: 0, z: 0}
   - id: 1
     name: AK47
     weaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
@@ -304,4 +316,8 @@ MonoBehaviour:
     fireDelay: 0.3
     weaponRange: 50
     gunDamage: 1
+    bulletLeft: 0
+    gunAudio: {fileID: 0}
+    reloadTime: 0
+    muzzleFlashOffset: {x: 0, y: 0, z: 0}
   currentWeaponId: 0

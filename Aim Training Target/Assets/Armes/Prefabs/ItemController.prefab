@@ -60,6 +60,10 @@ MonoBehaviour:
     fireDelay: 0.1
     weaponRange: 30
     gunDamage: 1
+    bulletLeft: 0
+    gunAudio: {fileID: 0}
+    reloadTime: 0
+    muzzleFlashOffset: {x: 0, y: 0, z: 0}
   - id: 1
     name: AK47
     weaponObject: {fileID: 1722651313867690, guid: 20f91947b81923147a7f381c02c96972,
@@ -68,4 +72,8 @@ MonoBehaviour:
     fireDelay: 0.3
     weaponRange: 50
     gunDamage: 1
+    bulletLeft: 0
+    gunAudio: {fileID: 0}
+    reloadTime: 0
+    muzzleFlashOffset: {x: 0, y: 0, z: 0}
   currentWeaponId: 0
