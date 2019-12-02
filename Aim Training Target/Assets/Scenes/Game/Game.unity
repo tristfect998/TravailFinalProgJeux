@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 1585311318241496, guid: a13859908e0956b40a69e6fb8cc4c540, type: 2}
   lifeTotal: 1
+  explosionlocation: {fileID: 0}
 --- !u!65 &100453860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -732,6 +733,26 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224233525426550124, guid: ca383fc6244e13743ae880a10b278c85,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224233525426550124, guid: ca383fc6244e13743ae880a10b278c85,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224233525426550124, guid: ca383fc6244e13743ae880a10b278c85,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -68.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224233525426550124, guid: ca383fc6244e13743ae880a10b278c85,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 74.099976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca383fc6244e13743ae880a10b278c85, type: 2}
