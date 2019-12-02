@@ -18,6 +18,8 @@ namespace AimTrainingTarget.Soldier
         bool vJumped = false;
         bool gunPositionChanged = false;
         bool isPause;
+        Quaternion baseAimingRotation;
+        Quaternion baseHipfireRotation;
         AudioSource audioSrc;
         ImageManager imageManager;
         public AudioClip movementClip;
@@ -27,6 +29,7 @@ namespace AimTrainingTarget.Soldier
         public GameObject AimingGunSlot;
         public GameObject HipFireGunSlot;
         public GameObject Crosshair;
+        public Vector3 Recoil;
         
 
         public float timeToAim = 1f;
@@ -41,6 +44,8 @@ namespace AimTrainingTarget.Soldier
             audioSrc = GetComponent<AudioSource>();
             isPause = false;
             imageManager = FindObjectOfType<ImageManager>();
+            baseAimingRotation = AimingGunSlot.transform.localRotation;
+            baseHipfireRotation = HipFireGunSlot.transform.localRotation;
         }
 
         void OnAnimatorIK(int layerIndex)
@@ -288,7 +293,7 @@ namespace AimTrainingTarget.Soldier
             #endregion
 
             #region Escape
-            if (Input.GetKeyDown("escape"))
+            /*if (Input.GetKeyDown("escape"))
             {
                 if (isPause)
                 {
@@ -302,7 +307,7 @@ namespace AimTrainingTarget.Soldier
                     //EscapeMenu.SetActive(true);                    
                     isPause = true;
                 }
-            }
+            }*/
             #endregion
         }
 

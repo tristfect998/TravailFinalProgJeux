@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using AimTrainingTarget.Soldier;
 
 public class SwitchingWeapon : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class SwitchingWeapon : MonoBehaviour {
     bool AimGunSlotPositionChanged = false;
     bool weaponInHand = false;
     bool weaponIsSwitching = false;
+    public FirstPersonController fpsc;
 
     public bool WeaponInHand {
         get { return weaponInHand; }
@@ -24,6 +26,7 @@ public class SwitchingWeapon : MonoBehaviour {
 
     void Start()
     {
+        fpsc = GetComponentInParent<FirstPersonController>();
         controller = GetComponentInChildren<WeaponDataBase>();
         audioSource = GetComponent<AudioSource>();
 
@@ -85,10 +88,12 @@ public class SwitchingWeapon : MonoBehaviour {
             switch(idArme)
             {
                 case 0: /*M4*/
-                    if(AimGunSlotPositionChanged)
+                    fpsc.isM4(true);
+                    if (AimGunSlotPositionChanged)
                         AimGunSlot.transform.localPosition -= AimingDifference;
                     break;
                 case 1: /*AK*/
+                    fpsc.isM4(false);
                     AimGunSlot.transform.localPosition += AimingDifference;
                     AimGunSlotPositionChanged = true;
                     break;
