@@ -10,7 +10,7 @@ using System.Linq;
 public class EndGameController : MonoBehaviour {
     public static EndGameController EndGameControl;
 
-    List<gameDataHighScore> DataHighScore;
+    List<gameDataHighScore> DataHighScore = new List<gameDataHighScore>();
     float bestTimeToFinish;
     int mapIndex;
     float newTimeToFinish;
@@ -26,20 +26,13 @@ public class EndGameController : MonoBehaviour {
 
         {
 
-            
-
             EndGameControl = this;
-
-
-
         }
 
         else
 
         {
-
             Destroy(gameObject);
-
         }
 
         audioSrc = GetComponent<AudioSource>();
@@ -104,6 +97,7 @@ public class EndGameController : MonoBehaviour {
         FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRec.dat", FileMode.Create);
         try
         {
+           
             BinaryFormatter bf = new BinaryFormatter();       
             scoreData scoreDataToSave = new scoreData();
             scoreDataToSave.gameHighscore =  DataHighScore;
@@ -113,6 +107,7 @@ public class EndGameController : MonoBehaviour {
         }
         catch (Exception e)
         {
+           
             print(e);
             file.Close();
         }
@@ -142,7 +137,9 @@ public class EndGameController : MonoBehaviour {
 
     public void isScoreBeat()
     {
-       
+        print(newTimeToFinish);
+        print(bestTimeToFinish);
+
         if (newTimeToFinish < bestTimeToFinish)
         {
             audioSrc.PlayOneShot(WinSound);
@@ -169,7 +166,7 @@ public class EndGameController : MonoBehaviour {
 
     public void addHighScore()
     {
-
+        print(newTimeToFinish);
         gameDataHighScore Data = new gameDataHighScore();
         Data.mapIndex = mapIndex;
         Data.bestTimeToFinish = newTimeToFinish;
