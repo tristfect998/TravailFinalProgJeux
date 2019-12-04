@@ -30,7 +30,6 @@ public class Target : MonoBehaviour, Damage {
     {
         if (!isDestroy)
         {
-            print(gameObject.transform.localScale);
             Instantiate(explosion, new Vector3(explosionlocation.transform.position.x, explosionlocation.transform.position.y , explosionlocation.transform.position.z), Quaternion.identity);
             Destroy(gameObject);
             isDestroy = true;

@@ -10,10 +10,8 @@ using System.Linq;
 public class EndGameButton : MonoBehaviour {
     int mapIndex;
 
-
     public void Restartmap()
     {
-        print(EndGameController.EndGameControl.getmapindex());
         SceneManager.LoadSceneAsync(EndGameController.EndGameControl.getmapindex(), LoadSceneMode.Single);
     }
 

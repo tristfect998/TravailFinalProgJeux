@@ -4881,10 +4881,6 @@ Prefab:
       propertyPath: Crosshair
       value: 
       objectReference: {fileID: 805651301}
-    - target: {fileID: 4474533189402874, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.00001
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabAsset: 0

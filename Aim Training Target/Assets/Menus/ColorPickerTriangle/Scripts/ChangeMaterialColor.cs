@@ -19,4 +19,9 @@ public class ChangeMaterialColor : MonoBehaviour {
     {
         material.color = colorPickers[colorIndex].TheColor;
     }
+
+    public Color GetColor()
+    {
+        return material.color;
+    }
 }

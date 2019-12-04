@@ -7,7 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Linq;
 
-public class EndGameController : MonoBehaviour {
+public class EndGameController : MonoBehaviour
+{
     public static EndGameController EndGameControl;
 
     List<gameDataHighScore> DataHighScore = new List<gameDataHighScore>();
@@ -21,16 +22,11 @@ public class EndGameController : MonoBehaviour {
 
     void Start()
     {
-
         if (EndGameControl == null)
-
         {
-
             EndGameControl = this;
         }
-
         else
-
         {
             Destroy(gameObject);
         }
@@ -39,6 +35,7 @@ public class EndGameController : MonoBehaviour {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         LoadDernierScore();
+
         try
         {
             LoadMeilleurScore();
@@ -46,7 +43,6 @@ public class EndGameController : MonoBehaviour {
         }
         catch (Exception)
         {
-          
             hasAHighScore = false;
             bestTimeToFinish =0.00f;
         }
@@ -67,10 +63,12 @@ public class EndGameController : MonoBehaviour {
     public void LoadDernierScore()
     {
         BinaryFormatter bf = new BinaryFormatter();
+
         if (!File.Exists(Application.persistentDataPath + "gameInfo.dat"))
         {
             throw new Exception("Game file doesnt exist");
         }
+
         FileStream file = File.Open(Application.persistentDataPath + "gameInfo.dat", FileMode.Open);
         gameData scoreDataToLoad = (gameData)bf.Deserialize(file);
         newTimeToFinish  = scoreDataToLoad.NewTimeToFinish;
@@ -80,41 +78,36 @@ public class EndGameController : MonoBehaviour {
 
     public void LoadMeilleurScore()
     {
-       
         BinaryFormatter bf = new BinaryFormatter();
+
         if (!File.Exists(Application.persistentDataPath + "gameInfoHighRecs.dat"))
         {
             throw new Exception("Game file doesnt exist");
         }
+
         FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRecs.dat", FileMode.Open);
         scoreData scoreDataToLoad = (scoreData)bf.Deserialize(file);
         bestTimeToFinish = scoreDataToLoad.gameHighscore.Where(s => s.mapIndex == mapIndex).FirstOrDefault().bestTimeToFinish;
         DataHighScore = scoreDataToLoad.gameHighscore;
         file.Close();
-        print("aalo");
     }
   
     public void SaveFirstScore()
     {
-        print(newTimeToFinish);
         FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRecs.dat", FileMode.Create);
-        print(newTimeToFinish);
 
         try
         {
-
             BinaryFormatter bf = new BinaryFormatter();       
             scoreData scoreDataToSave = new scoreData();
             scoreDataToSave.gameHighscore =  DataHighScore;
             bf.Serialize(file, scoreDataToSave);
             file.Close();
-
         }
         catch (Exception e)
         {
-           
-            print(e);
             file.Close();
+            throw new Exception(e.ToString());
         }
        
     }
@@ -122,6 +115,7 @@ public class EndGameController : MonoBehaviour {
     public void SaveHasHighScore()
     {
         FileStream file = File.Open(Application.persistentDataPath + "gameInfoHighRecs.dat", FileMode.Create);
+
         try
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -133,8 +127,8 @@ public class EndGameController : MonoBehaviour {
         }
         catch (Exception e)
         {
-            print(e);
             file.Close();
+            throw new Exception(e.ToString());
         }
 
     }
@@ -142,9 +136,6 @@ public class EndGameController : MonoBehaviour {
 
     public void isScoreBeat()
     {
-
-
-
         if (newTimeToFinish < bestTimeToFinish)
         {
             audioSrc.PlayOneShot(WinSound);
@@ -157,8 +148,9 @@ public class EndGameController : MonoBehaviour {
         GUIStyle style = new GUIStyle();
         style.fontSize = 32;
         GUI.Label(new Rect(165, 90, 180, 80), "Arene terminer : " + mapIndex, style);
-        GUI.Label(new Rect(165, 140, 180, 80), "Votre temps: " + String.Format("{0:0:00}", newTimeToFinish) , style);
-        GUI.Label(new Rect(165, 190, 180, 80), "Le temps records: " + String.Format("{0:0:00}", bestTimeToFinish) ,style);
+        GUI.Label(new Rect(165, 140, 180, 80), "Votre temps: " + String.Format("{0:0:00}", newTimeToFinish), style);
+        GUI.Label(new Rect(165, 190, 180, 80), "Le temps records: " + String.Format("{0:0:00}", bestTimeToFinish), style);
+
         if (newTimeToFinish > bestTimeToFinish)
         {
             GUI.Label(new Rect(165, 240, 180, 80), "Vous n'avez pas battu votre records" , style);
@@ -171,12 +163,10 @@ public class EndGameController : MonoBehaviour {
 
     public void addHighScore()
     {
-        print(newTimeToFinish);
         gameDataHighScore Data = new gameDataHighScore();
         Data.mapIndex = mapIndex;
         Data.bestTimeToFinish = newTimeToFinish;
         DataHighScore.Add(Data);
-
     }
 
     public void Restartmap()
@@ -210,5 +200,3 @@ public class gameDataHighScore
     public int mapIndex;
     public float bestTimeToFinish;
 }
-
-
