@@ -153,13 +153,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1000010175529674, guid: f24822f355d009d409e4bfb5c585f135, type: 2}
       propertyPath: m_Name
       value: ColorPicker-Second
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013784935286, guid: f24822f355d009d409e4bfb5c585f135,
+        type: 2}
+      propertyPath: colorPickerIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f24822f355d009d409e4bfb5c585f135, type: 2}
@@ -466,10 +467,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4000011043178730, guid: f24822f355d009d409e4bfb5c585f135, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1000010175529674, guid: f24822f355d009d409e4bfb5c585f135, type: 2}
       propertyPath: m_Name
       value: ColorPicker-Main
@@ -595,6 +592,14 @@ Prefab:
     - target: {fileID: 4115029847949650, guid: 6e9d3427703df09458f3d67b2a57f911, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879860084316184, guid: 6e9d3427703df09458f3d67b2a57f911, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732781740027342, guid: 6e9d3427703df09458f3d67b2a57f911, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e9d3427703df09458f3d67b2a57f911, type: 2}
@@ -1085,10 +1090,10 @@ RectTransform:
   m_Father: {fileID: 129040459}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 335.5, y: -313.9}
-  m_SizeDelta: {x: 113.45, y: 48.74}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 335.5, y: -197.9}
+  m_SizeDelta: {x: 113.45, y: 48.740005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2093249497
 MonoBehaviour:

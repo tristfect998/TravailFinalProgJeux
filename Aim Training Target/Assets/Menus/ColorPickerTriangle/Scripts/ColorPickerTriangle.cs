@@ -5,6 +5,8 @@ public class ColorPickerTriangle : MonoBehaviour {
 
     public Color TheColor = Color.cyan;
 
+    public int colorPickerIndex;
+
     const float MainRadius = .8f;
     const float CRadius = .5f;
     const float CWidth = .1f;

@@ -15,6 +15,8 @@ public class OverlayMenu : MonoBehaviour {
     void Start()
     {
         colors = FindObjectsOfType<ChangeMaterialColor>();
+
+        LoadColors();
     }
 
     public void LoadBackOptionMenu()
@@ -36,6 +38,26 @@ public class OverlayMenu : MonoBehaviour {
             ColorsSettings colorsSettings = Instantiate(colorsSettingsPrefab);
 
             SetColor(colorsSettings);
+        }
+    }
+
+    void LoadColors()
+    {
+        if (FindObjectOfType<ColorsSettings>() != null)
+        {
+            ColorsSettings colorsSettings = FindObjectOfType<ColorsSettings>();
+
+            foreach (ChangeMaterialColor color in colors)
+            {
+                if (color.colorIndex == 0)
+                {
+                    color.SetColor(colorsSettings.PrimaryColor);
+                }
+                else if (color.colorIndex == 1)
+                {
+                    color.SetColor(colorsSettings.SecondaryColor);
+                }
+            }
         }
     }
 
