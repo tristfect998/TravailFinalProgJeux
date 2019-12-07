@@ -147,17 +147,17 @@ public class EndGameController : MonoBehaviour
     {
         GUIStyle style = new GUIStyle();
         style.fontSize = 32;
-        GUI.Label(new Rect(165, 90, 180, 80), "Arene terminer : " + mapIndex, style);
+        GUI.Label(new Rect(165, 90, 180, 80), "Arène terminée : " + mapIndex, style);
         GUI.Label(new Rect(165, 140, 180, 80), "Votre temps: " + String.Format("{0:0:00}", newTimeToFinish), style);
-        GUI.Label(new Rect(165, 190, 180, 80), "Le temps records: " + String.Format("{0:0:00}", bestTimeToFinish), style);
+        GUI.Label(new Rect(165, 190, 180, 80), "Le temps record: " + String.Format("{0:0:00}", bestTimeToFinish), style);
 
         if (newTimeToFinish > bestTimeToFinish)
         {
-            GUI.Label(new Rect(165, 240, 180, 80), "Vous n'avez pas battu votre records" , style);
+            GUI.Label(new Rect(165, 240, 180, 80), "Vous n'avez pas battu votre record" , style);
         }
         else
         {
-            GUI.Label(new Rect(165, 240, 180, 80), "Vous avez battu votre records", style);
+            GUI.Label(new Rect(165, 240, 180, 80), "Vous avez battu votre record", style);
         }
     }
 

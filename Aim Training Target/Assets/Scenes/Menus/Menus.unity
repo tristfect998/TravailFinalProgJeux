@@ -1033,10 +1033,10 @@ RectTransform:
   m_Father: {fileID: 868556209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400.00003, y: -186.41116}
+  m_SizeDelta: {x: 266.6667, y: 372.82233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223921485
 MonoBehaviour:
@@ -1089,16 +1089,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 872708515}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 868556212}
+        m_MethodName: LoadCharacterColorPickers
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -1504,10 +1504,10 @@ RectTransform:
   m_Father: {fileID: 868556209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133.33334, y: -186.41116}
+  m_SizeDelta: {x: 266.6667, y: 372.82233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &342452693
 MonoBehaviour:
@@ -2522,10 +2522,10 @@ RectTransform:
   m_Father: {fileID: 868556209}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 666.66675, y: -186.41116}
+  m_SizeDelta: {x: 266.6667, y: 372.82233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566281713
 MonoBehaviour:
@@ -4002,6 +4002,7 @@ GameObject:
   - component: {fileID: 868556209}
   - component: {fileID: 868556210}
   - component: {fileID: 868556211}
+  - component: {fileID: 868556212}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -4066,6 +4067,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36d4eadf8d9b934eae8c3d990e9367d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &868556212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 868556208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad13b4a9c0280f4429df96225d938ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropDown: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 534794ccd3ba12640afc2c893a59cf40, type: 2}
 --- !u!1 &871057522
 GameObject:
   m_ObjectHideFlags: 0
@@ -7530,7 +7544,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 872708518}
         m_MethodName: SetVolume
-        m_Mode: 0
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using System;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class OptionsMenu : MonoBehaviour
         return res.width + " x " + res.height;
     }
 
-    public void SetVolume(float volume)
+    public void SetVolume(Single volume)
     {
         audioMixer.SetFloat("volume", volume);
     }
