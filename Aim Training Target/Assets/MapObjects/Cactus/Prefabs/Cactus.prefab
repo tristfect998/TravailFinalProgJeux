@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33656974682443820}
   - component: {fileID: 23914854529952806}
   - component: {fileID: 64089578861986590}
+  - component: {fileID: 65712451539157544}
   m_Layer: 0
   m_Name: Cactus
-  m_TagString: Untagged
+  m_TagString: Cactus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,13 +36,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1285264111096988}
-  m_LocalRotation: {x: 0.000000030908623, y: 0.7071068, z: 0.7071067, w: 0.000000030908616}
-  m_LocalPosition: {x: -2.5825, y: 0.989, z: 3.7849}
-  m_LocalScale: {x: -14.946072, y: -14.946072, z: -61.393616}
+  m_LocalRotation: {x: 0.24007536, y: 0.66510445, z: 0.6651043, w: -0.24007529}
+  m_LocalPosition: {x: -53.72696, y: 24.61892, z: 8.240673}
+  m_LocalScale: {x: -14.946075, y: -14.946072, z: -61.393616}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -140.30501}
 --- !u!23 &23914854529952806
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -98,3 +99,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: b7936544187c88e4f8dd7c842f16fee8, type: 3}
+--- !u!65 &65712451539157544
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1285264111096988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.060767807, y: 0.096237674, z: 0.028113304}
+  m_Center: {x: 0.00014361112, y: -0.002138764, z: 0.0018130075}
